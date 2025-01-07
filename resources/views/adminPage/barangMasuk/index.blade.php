@@ -9,9 +9,9 @@
                 <select name="barang_id" id="barang_id" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
                     required>
                     <option value="" disabled selected>Pilih Barang</option>
-                    @foreach ($barangs as $barang)
-                        <option value="{{ $barang->id }}">{{ $barang->nama_barang }}</option>
-                    @endforeach
+                    {{-- @foreach ($barangs as $barang) --}}
+                    <option value="">PPilih Barang</option>
+                    {{-- @endforeach     --}}
                 </select>
             </div>
             <div>

@@ -13,7 +13,8 @@
             <a href="{{ route('input_barang') }}"
                 class="block py-2 px-4 rounded-md text-white hover:bg-violet-600">Input
                 Barang</a>
-            <a href="{{ route('barangMasuk') }}">Barang Masuk</a>
+            <a href="{{ route('barangMasuk') }}"
+                class="block py-2 px-4 rounded-md text-white hover:bg-violet-600">Barang Masuk</a>
         </div>
         <a href="" class="block py-2 px-4 rounded-md text-white hover:bg-violet-600">logout</a>
     </nav>
