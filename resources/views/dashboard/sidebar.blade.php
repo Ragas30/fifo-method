@@ -1,4 +1,4 @@
-<button id="hamburger" class="md:hidden flex flex-col items-center justify-center gap-1" aria-label="menu"
+<button id="hamburger" class="md:hidden flex flex-col items-start justify-start mt-5 ml-2 gap-1" aria-label="menu"
     onclick="document.getElementById('mobileMenu').classList.toggle('hidden'); this.ariaLabel === 'menu' ? this.ariaLabel = 'close menu' : this.ariaLabel = 'menu'">
     <span class="block w-6 h-1 bg-white"></span>
     <span class="block w-6 h-1 bg-white"></span>
