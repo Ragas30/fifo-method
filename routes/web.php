@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\home\homeController;
 use App\Http\Controllers\auth\loginController;
+use App\Http\Controllers\auth\registerController;
 use App\Http\Controllers\admin\dashboardController;
 use App\Http\Controllers\transaksi\transaksiController;
 use App\Http\Controllers\inputBarang\inputBarangController;
@@ -12,4 +13,5 @@ route::get('/dashboard', [dashboardController::class, "index"])->name('dashboard
 route::get('/input_barang', [dashboardController::class, "inputBarang"])->name('input_barang');
 route::get('/barangMasuk', [transaksiController::class, "index"])->name('barangMasuk');
 Route::post('/transaksis/store', [transaksiController::class, 'store'])->name('transaksis.store');
-route::get('login', [loginController::class, 'login'])->name('login');
+route::get('/login', [loginController::class, 'login'])->name('login');
+route::get('/register', [registerController::class, 'register'])->name('register');
