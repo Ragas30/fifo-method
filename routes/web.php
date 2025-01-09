@@ -14,11 +14,11 @@ route::get('/', [homeController::class, "index"])->name('home');
 
 //register
 route::get('/register', [registerController::class, 'showregistrationform'])->name('register');
-route::post('/register', [RegisterController::class, 'register'])->name('register');
+route::post('/register', [RegisterController::class, 'register'])->name('registerPost');
 
 //login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('loginPost');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //dashboard
@@ -28,7 +28,7 @@ route::get('/dashboard', [dashboardController::class, "index"])->name('dashboard
 route::get('/input_barang', [dashboardController::class, "inputBarang"])->name('input_barang');
 route::post('/input_barang', [inputBarangController::class, "store"])->name('input_barang');
 route::get('/tampil_barang', [inputBarangController::class, "tampil"])->name('tampil_barang');
-route::delete('/delete_barang/{id}', [inputBarangController::class, "destroy"])->name('delete_barang');
+route::get('/delete_barang/{id}', [inputBarangController::class, "destroy"])->name('delete_barang');
 route::get('/edit_barang/{id}', [inputBarangController::class, "edit"])->name('edit_barang');
 route::put('/update_barang/{id}', [inputBarangController::class, "update"])->name('update_barang');
 

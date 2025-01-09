@@ -12,7 +12,7 @@
         </div>
         <div class="bg-white p-4 rounded-md shadow-md">
             <h2 class="text-2xl font-bold">Products</h2>
-            <p class="mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p class="mt-2">Total Barang: {{ $barangs }}</p>
         </div>
         <div class="bg-white p-4 rounded-md shadow-md">
             <h2 class="text-2xl font-bold">Orders</h2>

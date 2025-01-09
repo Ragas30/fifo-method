@@ -2,7 +2,7 @@
     <div class="flex items-center justify-between">
 
         <div class="flex items-center gap-2">
-            <a href="{{ route('home') }}" class="font-bold text-3xl text-white">CV. Vega Kontruksi</a>
+            <a href="{{ route('home') }}" class="font-bold text-3xl text-white">CV. Vega Kontruksi Advertising</a>
         </div>
 
 

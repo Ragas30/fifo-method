@@ -2,7 +2,7 @@
 @section('title', 'Home')
 @section('content')
     <main
-        class="flex flex-row items-center justify-center h-screen bg-gradient-to-r pt-10 from-violet-900 via-slate-800 to-black px-4 md:px-10 lg:px-20 xl:px-40">
+        class="flex flex-row items-center justify-center h-screen bg-gradient-to-r pt-10 from-green-900 via-slate-800 to-black px-4 md:px-10 lg:px-20 xl:px-40">
 
         <div class="grid grid-cols-1 justify-start md:grid-cols-2 gap-4 md:gap-8 lg:gap-12 p-8 md:p-0">
             <div class="flex flex-col items-start justify-center text-white">
@@ -22,9 +22,9 @@
                 <hr class="w-full">
                 untuk detail lebih lanjut silahkan klik tombol di bawah
                 </p>
-                <a href=""
+                <a href="https://wa.me/6281261736929"
                     class="mt-2 md:mt-12 px-6 py-2 rounded-md bg-white text-black hover:bg-violet-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900">
-                    Baca Selengkapnya
+                    Hubungi Kami
                 </a>
             </div>
 

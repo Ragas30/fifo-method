@@ -27,11 +27,18 @@ class inputBarangController extends Controller
             'keterangan' => 'nullable|string|max:255',
         ]);
 
-        Barang::create([
-            'nama_barang' => $request->nama_barang,
-            'stok' => $request->stok,
-            'keterangan' => $request->keterangan,
-        ]);
+        $barang = Barang::where('nama_barang', $request->nama_barang)->first();
+
+        if ($barang) {
+            $barang->stok += $request->stok;
+            $barang->save();
+        } else {
+            Barang::create([
+                'nama_barang' => $request->nama_barang,
+                'stok' => $request->stok,
+                'keterangan' => $request->keterangan,
+            ]);
+        }
 
         return redirect()->route('tampil_barang')->with('success', 'Barang berhasil ditambahkan.');
     }
@@ -40,16 +47,15 @@ class inputBarangController extends Controller
     public function destroy(Request $request) //+
     {
         $barangs = Barang::findOrFail($request->id);
-
         $barangs->delete();
         return redirect()->route('tampil_barang')->with('success', 'Barang berhasil dihapus.');
     }
 
-    
+
     public function edit(Request $request) //+
     {
-        $barangs = Barang::findOrFail($request->id);
-        return view('adminPage.inputBarang.edit', compact('barangs'));
+        $barang = Barang::findOrFail($request->id);
+        return view('adminPage.inputBarang.edit', compact('barang'));
     }
 
     public function update(Request $request, $id) //+
