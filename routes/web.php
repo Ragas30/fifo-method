@@ -14,4 +14,5 @@ route::get('/input_barang', [dashboardController::class, "inputBarang"])->name('
 route::get('/barangMasuk', [transaksiController::class, "index"])->name('barangMasuk');
 Route::post('/transaksis/store', [transaksiController::class, 'store'])->name('transaksis.store');
 route::get('/login', [loginController::class, 'login'])->name('login');
-route::get('/register', [registerController::class, 'register'])->name('register');
+route::get('/register', [registerController::class, 'showregistrationform'])->name('register');
+route::post('/register', [RegisterController::class, 'register'])->name('register');
