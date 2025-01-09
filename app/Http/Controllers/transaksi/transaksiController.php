@@ -11,7 +11,8 @@ class transaksiController extends Controller
 {
     public function index()
     {
-        return view('adminPage.barangMasuk.index');
+        $barangs = Barang::all();
+        return view('adminPage.barangMasuk.index', compact('barangs'));
     }
     public function store(Request $request)
     {
@@ -50,3 +51,4 @@ class transaksiController extends Controller
         return redirect()->route('barangs.index')->with('success', 'Transaksi berhasil dicatat!');
     }
 }
+

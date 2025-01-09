@@ -31,3 +31,6 @@ route::get('/tampil_barang', [inputBarangController::class, "tampil"])->name('ta
 route::delete('/delete_barang/{id}', [inputBarangController::class, "destroy"])->name('delete_barang');
 route::get('/edit_barang/{id}', [inputBarangController::class, "edit"])->name('edit_barang');
 route::put('/update_barang/{id}', [inputBarangController::class, "update"])->name('update_barang');
+
+//barang masuk/keluar
+route::get('/transaksi', [transaksiController::class, "index"])->name('transaksi');
