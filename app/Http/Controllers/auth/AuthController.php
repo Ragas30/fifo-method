@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\auth;
+namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\LoginRequest;
 
 class AuthController extends Controller
 {
@@ -18,13 +18,10 @@ class AuthController extends Controller
     // Proses login
     public function login(LoginRequest $request)
     {
-        if ($request->validated()) {
-            if (Auth::guard('admin')->attempt([
-                'email' => $request->email,
-                'password' => $request->password,
-            ])) {
-                return redirect('/dashboard');
-            }
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('dashboard');
         }
 
         return back()->withErrors([

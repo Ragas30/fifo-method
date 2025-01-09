@@ -12,7 +12,7 @@
         </div>
 
         <div class="hidden md:flex items-center gap-2 font-bold">
-            <a href="{{ route('dashboard') }}"
+            <a href="{{ route('login') }}"
                 class="block py-2 px-4 rounded-md text-white hover:bg-violet-600">Dashboard</a>
 
         </div>
@@ -29,7 +29,7 @@
     <div id="mobileMenu" class="hidden  flex-col gap-2 mt-4 md:hidden text-center text-white">
         <a href="" class="block py-2 px-4 hover:bg-violet-600">About</a>
         <a href="" class="block py-2 px-4 hover:bg-violet-600">Service</a>
-        <a href="{{ route('dashboard') }}" class="block py-2 px-4 hover:bg-violet-600">Dashboard</a>
+        <a href="{{ route('login') }}" class="block py-2 px-4 hover:bg-violet-600">Dashboard</a>
 
     </div>
 </nav>
