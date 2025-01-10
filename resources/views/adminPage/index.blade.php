@@ -3,7 +3,7 @@
 @section('content')
     <header class="flex justify-between">
         <h1 class="text-3xl font-bold">Dashboard</h1>
-        <button class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">New</button>
+        <button class="bg-lime-600 text-white px-4 py-2 rounded-md hover:bg-lime-700">New</button>
     </header>
     <div class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div class="bg-white p-4 rounded-md shadow-md">

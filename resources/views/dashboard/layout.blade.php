@@ -11,7 +11,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-violet-900">
+<body class="bg-green-700">
     <div class="flex h-screen">
         @include('dashboard.sidebar')
         <main class="flex-1 p-4 overflow-y-scroll">
