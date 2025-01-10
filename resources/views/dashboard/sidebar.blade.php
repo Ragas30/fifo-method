@@ -20,6 +20,8 @@
                 class="block py-2 px-4 rounded-md text-white hover:bg-violet-600">Transaksi</a>
             <a href="{{ route('listTransaksi') }}"
                 class="block py-2 px-4 rounded-md text-white hover:bg-violet-600">List Transaksi</a></a>
+            <a href="{{ route('penjualan') }}"
+                class="block py-2 px-4 rounded-md text-white hover:bg-violet-600">Penjualan</a></a>
         </div>
         <a href="{{ route('logout') }}" class="block py-2 px-4 rounded-md text-white hover:bg-violet-600">logout</a>
     </nav>

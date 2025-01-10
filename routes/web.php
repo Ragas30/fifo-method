@@ -8,6 +8,7 @@ use App\Http\Controllers\auth\registerController;
 use App\Http\Controllers\admin\dashboardController;
 use App\Http\Controllers\transaksi\transaksiController;
 use App\Http\Controllers\inputBarang\inputBarangController;
+use App\Http\Controllers\penjualan\PenjualansController;
 use App\Http\Controllers\transaksi\listTransaksiController;
 
 //home
@@ -37,3 +38,10 @@ route::put('/update_barang/{id}', [inputBarangController::class, "update"])->nam
 route::get('/transaksi', [transaksiController::class, "index"])->name('transaksi');
 route::post('/transaksi', [transaksiController::class, "store"])->name('transaksiPost');
 route::get('/list_transaksi', [listTransaksiController::class, "index"])->name('listTransaksi');
+
+// Route Penjualan
+Route::get('/penjualan', [PenjualansController::class, "index"])->name('penjualan');
+Route::post('/penjualan', [PenjualansController::class, "store"])->name('penjualan.store');
+Route::get('/penjualan/{id}/edit', [PenjualansController::class, "edit"])->name('penjualan.edit');
+Route::put('/penjualan/{id}', [PenjualansController::class, "update"])->name('penjualan.update');
+Route::delete('/penjualan/{id}', [PenjualansController::class, "destroy"])->name('penjualan.destroy');
