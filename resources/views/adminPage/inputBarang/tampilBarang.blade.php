@@ -14,6 +14,8 @@
                     <th class="px-4 py-2">No</th>
                     <th class="px-4 py-2">Nama Barang</th>
                     <th class="px-4 py-2">Stok Barang</th>
+                    <th class="px-4 py-2">Harga Beli</th>
+                    <th class="px-4 py-2">Harga Jual</th>
                     <th class="px-4 py-2">Keterangan</th>
                     <th class="px-4 py-2">Aksi</th>
                 </tr>
@@ -24,6 +26,8 @@
                         <td class="border px-4 py-2">{{ $loop->iteration }}</td>
                         <td class="border px-4 py-2">{{ $barang->nama_barang }}</td>
                         <td class="border px-4 py-2">{{ $barang->stok }}</td>
+                        <td class="border px-4 py-2">{{ $barang->harga_beli }}</td>
+                        <td class="border px-4 py-2">{{ $barang->harga_jual }}</td>
                         <td class="border px-4 py-2">{{ $barang->keterangan }}</td>
                         <td class="border px-4 py-2">
                             <a href="{{ route('edit_barang', $barang->id) }}"

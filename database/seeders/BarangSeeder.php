@@ -16,21 +16,26 @@ class BarangSeeder extends Seeder
                 'nama_barang' => 'Baja Ringan',
                 'stok' => 10,
                 'satuan' => 'pcs',
+                'harga_beli' => 10000,
+                'harga_jual' => 12000,
                 'keterangan' => 'Bahan untuk membuat rumah',
             ],
             [
                 'nama_barang' => 'Baja Berat',
                 'stok' => 5,
+                'harga_beli' => 10000,
+                'harga_jual' => 12000,
                 'satuan' => 'pcs',
                 'keterangan' => 'Bahan untuk membuat rumah',
             ],
             [
                 'nama_barang' => 'Semen',
                 'stok' => 5,
+                'harga_beli' => 10000,
+                'harga_jual' => 12000,
                 'satuan' => 'kg',
                 'keterangan' => 'Bahan untuk membuat rumah',
             ],
         ]);
     }
 }
-

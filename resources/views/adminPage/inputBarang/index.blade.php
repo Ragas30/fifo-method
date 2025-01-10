@@ -20,6 +20,16 @@
                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
             </div>
             <div>
+                <label for="harga_beli" class="block text-sm font-medium text-text-white">Harga Beli</label>
+                <input type="text" name="harga_beli" id="harga_beli"
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+            </div>
+            <div>
+                <label for="harga_jual" class="block text-sm font-medium text-text-white">Harga Jual</label>
+                <input type="text" name="harga_jual" id="harga_jual"
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+            </div>
+            <div>
                 <label for="keterangan" class="block text-sm font-medium text-text-white">Keterangan</label>
                 <input type="text" name="keterangan" id="keterangan"
                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">

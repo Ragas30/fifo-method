@@ -24,6 +24,8 @@ class inputBarangController extends Controller
         $request->validate([
             'nama_barang' => 'required|string|max:255',
             'stok' => 'required|integer|min:0',
+            'harga_beli' => 'required|min:0',
+            'harga_jual' => 'required|min:0',
             'satuan' => 'required|string|max:255',
             'keterangan' => 'nullable|string|max:255',
         ]);
@@ -37,6 +39,8 @@ class inputBarangController extends Controller
             Barang::create([
                 'nama_barang' => $request->nama_barang,
                 'stok' => $request->stok,
+                'harga_beli' => $request->harga_beli,
+                'harga_jual' => $request->harga_jual,
                 'satuan' => $request->satuan,
                 'keterangan' => $request->keterangan,
             ]);
@@ -65,6 +69,8 @@ class inputBarangController extends Controller
         $request->validate([
             'nama_barang' => 'required|string|max:255',
             'stok' => 'required|integer|min:0',
+            'harga_beli' => 'required|min:0',
+            'harga_jual' => 'required|min:0',
             'keterangan' => 'nullable|string|max:255',
         ]);
 
@@ -72,6 +78,8 @@ class inputBarangController extends Controller
         $barangs->update([
             'nama_barang' => $request->nama_barang,
             'stok' => $request->stok,
+            'harga_beli' => $request->harga_beli,
+            'harga_jual' => $request->harga_jual,
             'keterangan' => $request->keterangan,
         ]);
 
