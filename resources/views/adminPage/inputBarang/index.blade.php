@@ -15,6 +15,11 @@
                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
             </div>
             <div>
+                <label for="satuan" class="block text-sm font-medium text-text-white">Satuan</label>
+                <input type="text" name="satuan" id="satuan"
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+            </div>
+            <div>
                 <label for="keterangan" class="block text-sm font-medium text-text-white">Keterangan</label>
                 <input type="text" name="keterangan" id="keterangan"
                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">

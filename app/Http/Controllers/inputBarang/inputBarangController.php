@@ -24,6 +24,7 @@ class inputBarangController extends Controller
         $request->validate([
             'nama_barang' => 'required|string|max:255',
             'stok' => 'required|integer|min:0',
+            'satuan' => 'required|string|max:255',
             'keterangan' => 'nullable|string|max:255',
         ]);
 
@@ -36,6 +37,7 @@ class inputBarangController extends Controller
             Barang::create([
                 'nama_barang' => $request->nama_barang,
                 'stok' => $request->stok,
+                'satuan' => $request->satuan,
                 'keterangan' => $request->keterangan,
             ]);
         }

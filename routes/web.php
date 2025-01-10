@@ -17,7 +17,7 @@ route::get('/register', [registerController::class, 'showregistrationform'])->na
 route::post('/register', [RegisterController::class, 'register'])->name('registerPost');
 
 //login
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('loginPost');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 

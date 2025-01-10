@@ -12,7 +12,7 @@
 <body class="bg-violet-900">
     <div class="min-h-screen flex justify-center items-center">
         <div class="flex flex-col bg-violet-500 p-8 rounded-lg shadow-2xl">
-            <form action="{{ route('register') }}" method="POST" class="space-y-6">
+            <form action="{{ route('registerPost') }}" method="POST" class="space-y-6">
                 @csrf
                 <div class="mt-4">
                     <label for="name" class="block text-white font-semibold">Nama</label>
