@@ -14,4 +14,13 @@ class Transaksi extends Model
     {
         return $this->belongsTo(Barang::class);
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($barang) {
+            
+        });
+    }
 }
