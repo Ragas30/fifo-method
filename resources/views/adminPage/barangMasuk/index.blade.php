@@ -2,7 +2,7 @@
 @section('title', 'Transaksi Barang')
 @section('content')
     <div class="flex justify-start items-center border-sm">
-        <form action="" method="POST" class="space-y-4">
+        <form action="{{ route('transaksiPost') }}" method="POST" class="space-y-4">
             @csrf
             <div>
                 <label for="barang_id" class="block text-sm font-medium text-text-white">Pilih Barang</label>
@@ -18,6 +18,7 @@
                 <label for="jenis" class="block text-sm font-medium text-text-white">Jenis Transaksi</label>
                 <select name="jenis" id="jenis" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
                     required>
+                    <option value="" disabled selected>Pilih Jenis</option>
                     <option value="masuk">Barang Masuk</option>
                     <option value="keluar">Barang Keluar</option>
                 </select>

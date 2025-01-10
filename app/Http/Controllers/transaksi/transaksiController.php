@@ -48,7 +48,6 @@ class transaksiController extends Controller
 
         $barang->save();
 
-        return redirect()->route('barangs.index')->with('success', 'Transaksi berhasil dicatat!');
+        return redirect()->route('tampil_barang')->with('success', 'Transaksi berhasil dicatat!');
     }
 }
-

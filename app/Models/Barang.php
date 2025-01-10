@@ -11,4 +11,8 @@ class Barang extends Model
     protected $table = 'barangs';
     protected $primaryKey = 'id';
     protected $fillable = ['nama_barang', 'stok', 'satuan', 'keterangan'];
+
+    public function  transaksi(){
+        return $this->hasMany(Transaksi::class);
+    }
 }

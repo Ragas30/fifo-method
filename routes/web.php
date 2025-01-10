@@ -8,6 +8,7 @@ use App\Http\Controllers\auth\registerController;
 use App\Http\Controllers\admin\dashboardController;
 use App\Http\Controllers\transaksi\transaksiController;
 use App\Http\Controllers\inputBarang\inputBarangController;
+use App\Http\Controllers\transaksi\listTransaksiController;
 
 //home
 route::get('/', [homeController::class, "index"])->name('home');
@@ -34,3 +35,5 @@ route::put('/update_barang/{id}', [inputBarangController::class, "update"])->nam
 
 //barang masuk/keluar
 route::get('/transaksi', [transaksiController::class, "index"])->name('transaksi');
+route::post('/transaksi', [transaksiController::class, "store"])->name('transaksiPost');
+route::get('/list_transaksi', [listTransaksiController::class, "index"])->name('listTransaksi');
