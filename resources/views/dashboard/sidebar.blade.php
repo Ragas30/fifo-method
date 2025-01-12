@@ -5,7 +5,7 @@
     <span class="block w-6 h-1 bg-white"></span>
 </button>
 
-<aside id="mobileMenu" class="hidden md:block w-[200px] bg-lime-700 p-4 justify-between">
+<aside id="mobileMenu" class="hidden md:block w-[200px] bg-black p-4 justify-between">
     <nav class="space-y-1 flex flex-col justify-between h-full">
         <div class="font-bold">
             <a href="{{ route('dashboard') }}"
