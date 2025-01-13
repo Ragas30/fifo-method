@@ -33,7 +33,7 @@
             <div class="flex items-center justify-center">
                 <div id="background"
                     class="bg-white w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden shadow-lg">
-                    {{-- <img src="https://ragas30.github.io/foto/ragas.jpeg" alt="Gambar" class="w-full h-full object-cover"> --}}
+                    <img src="{{ asset('background/bg.jpg') }}" alt="Gambar" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>

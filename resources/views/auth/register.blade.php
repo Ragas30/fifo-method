@@ -7,11 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register Page</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        body {
+            background-image: url({{ asset('background/bg.jpg') }});
+            background-size: cover;
+        }
+    </style>
 </head>
 
-<body class="bg-violet-900">
+<body class="bg-green-900">
     <div class="min-h-screen flex justify-center items-center">
-        <div class="flex flex-col bg-violet-500 p-8 rounded-lg shadow-2xl">
+        <div class="flex flex-col bg-green-500 p-8 rounded-lg shadow-2xl">
             <form action="{{ route('registerPost') }}" method="POST" class="space-y-6">
                 @csrf
                 <div class="mt-4">
