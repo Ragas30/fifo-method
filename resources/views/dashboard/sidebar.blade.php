@@ -7,21 +7,30 @@
 
 <aside id="mobileMenu" class="hidden md:block md:w-[200px] bg-black p-4">
     <nav class="space-y-1 flex flex-col justify-between h-full">
-        <div class="font-bold">
-            <a href="{{ route('dashboard') }}"
-                class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">Dashboard</a>
-            {{-- <a href="{{ route('input_barang') }}"
-                class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">Input
-                Barang</a> --}}
-            <a href="{{ route('tampil_barang') }}" class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">Data
-                Barang</a>
-            <a href="{{ route('transaksi') }}"
-                class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">Transaksi</a>
-            <a href="{{ route('listTransaksi') }}" class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">List
-                Transaksi</a>
-            <a href="{{ route('penjualan') }}"
-                class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">Penjualan</a>
-        </div>
+        @if (auth()->user()->level === 'admin')
+            <div class="font-bold">
+                <a href="{{ route('dashboard') }}"
+                    class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">Dashboard</a>
+                <a href="{{ route('input_barang') }}"
+                    class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">Input
+                    Barang</a>
+                <a href="{{ route('tampil_barang') }}" class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">Data
+                    Barang</a>
+                <a href="{{ route('transaksi') }}"
+                    class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">Transaksi</a>
+                <a href="{{ route('listTransaksi') }}" class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">List
+                    Transaksi</a>
+                <a href="{{ route('penjualan') }}"
+                    class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">Penjualan</a>
+            </div>
+        @else
+            <div class="font-bold">
+                <a href="{{ route('tampil_barang') }}" class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">Data
+                    Barang</a>
+                <a href="{{ route('transaksi') }}"
+                    class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">Transaksi</a>
+            </div>
+        @endif
         <a href="{{ route('logout') }}" class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">logout</a>
     </nav>
 </aside>

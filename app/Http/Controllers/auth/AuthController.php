@@ -15,13 +15,24 @@ class AuthController extends Controller
         return view('auth.loginPage');
     }
 
-    // Proses login
+    // Proses login berdasarkan level
     public function login(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect('dashboard');
+            $user = Auth::user();
+            switch ($user->level) {
+                case 'admin':
+                    return redirect()->route('dashboard');
+                case 'pimpinan':
+                    return redirect()->route('dashboard');
+                default:
+                    Auth::logout();
+                    return back()->withErrors([
+                        'email' => 'Level pengguna tidak valid.',
+                    ])->onlyInput('email');
+            }
         }
 
         return back()->withErrors([
