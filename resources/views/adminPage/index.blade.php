@@ -1,22 +1,37 @@
 @extends('dashboard.layout')
 @section('title', 'Admin Page')
 @section('content')
-    <header class="flex justify-between">
-        <h1 class="text-3xl font-bold">Dashboard</h1>
-        <button class="bg-lime-600 text-white px-4 py-2 rounded-md hover:bg-lime-700">New</button>
+    <header class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-serif font-bold">Dashboard {{ auth()->user()->level }}</h1>
     </header>
-    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="bg-white p-4 rounded-md shadow-md">
-            <h2 class="text-2xl font-bold">Users</h2>
-            <p class="mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+    @if (auth()->user()->level === 'admin')
+        <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-cursive font-semibold mb-2">Products</h2>
+                <p class="text-gray-600">Total Barang: <span class="font-serif">{{ $barangs }}</span></p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-fantasy font-semibold mb-2">Orders</h2>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
         </div>
-        <div class="bg-white p-4 rounded-md shadow-md">
-            <h2 class="text-2xl font-bold">Products</h2>
-            <p class="mt-2">Total Barang: {{ $barangs }}</p>
+    @else
+        <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-sans font-semibold mb-2">Users</h2>
+                <p class="text-gray-600">Total User: <span class="font-monospace">{{ $users->count() }}</span></p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-cursive font-semibold mb-2">Products</h2>
+                <p class="text-gray-600">Total Barang: <span class="font-serif">{{ $barangs }}</span></p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-fantasy font-semibold mb-2">Orders</h2>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
         </div>
-        <div class="bg-white p-4 rounded-md shadow-md">
-            <h2 class="text-2xl font-bold">Orders</h2>
-            <p class="mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-        </div>
-    </div>
+    @endif
+
 @endsection
+
