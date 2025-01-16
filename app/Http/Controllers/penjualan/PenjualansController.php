@@ -5,7 +5,9 @@ namespace App\Http\Controllers\penjualan;
 use App\Http\Controllers\Controller;
 use App\Models\Barang;
 use App\Models\Penjualan;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PenjualansController extends Controller
 {
@@ -26,11 +28,20 @@ class PenjualansController extends Controller
 
         $total_harga = $request->jumlah * $request->harga_barang;
 
-        Penjualan::create([
-            'barang_id' => $request->barang_id,
-            'jumlah' => $request->jumlah,
-            'total_harga' => $total_harga,
-        ]);
+        DB::transaction(function () use ($request, $total_harga) {
+            Penjualan::create([
+                'barang_id' => $request->barang_id,
+                'jumlah' => $request->jumlah,
+                'total_harga' => $total_harga,
+            ]);
+
+            Transaksi::create([
+                'barang_id' => $request->barang_id,
+                'jenis' => 'keluar',
+                'jumlah' => $request->jumlah,
+                'harga_satuan' => $request->harga_barang,
+            ]);
+        });
 
         return redirect()->route('penjualan')->with('success', 'Penjualan berhasil ditambahkan.');
     }
@@ -69,3 +80,4 @@ class PenjualansController extends Controller
         return redirect()->route('penjualan')->with('success', 'Penjualan berhasil dihapus');
     }
 }
+

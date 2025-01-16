@@ -52,6 +52,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/penjualan/{id}', [PenjualansController::class, "update"])->name('penjualan.update');
     Route::delete('/penjualan/{id}', [PenjualansController::class, "destroy"])->name('penjualan.destroy');
 
+    // Route Pembelian
+    
+
     //pimpinan
     Route::get('/pimpinan_page', [pimpinanController::class, "index"])->name('pimpinan_page');
     Route::get('/laporan_pimpinan', [laporanController::class, "laporan"])->name('laporan_pimpinan');
