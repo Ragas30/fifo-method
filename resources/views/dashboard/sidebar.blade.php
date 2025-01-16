@@ -24,6 +24,8 @@
                     Transaksi</a>
                 <a href="{{ route('penjualan') }}"
                     class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">Penjualan</a>
+                <a href="{{ route('pembelian') }}"
+                    class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">Pembelian</a>
             </div>
         @else
             <div class="font-bold">

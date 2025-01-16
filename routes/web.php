@@ -11,6 +11,7 @@ use App\Http\Controllers\pimpinan\pimpinanController;
 use App\Http\Controllers\transaksi\transaksiController;
 use App\Http\Controllers\penjualan\PenjualansController;
 use App\Http\Controllers\inputBarang\inputBarangController;
+use App\Http\Controllers\pembelian\pembelianController;
 use App\Http\Controllers\transaksi\listTransaksiController;
 
 Route::middleware('guest')->group(function () {
@@ -53,7 +54,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/penjualan/{id}', [PenjualansController::class, "destroy"])->name('penjualan.destroy');
 
     // Route Pembelian
-    
+    Route::get('/pembelian', [pembelianController::class, "index"])->name('pembelian');
+    Route::post('/pembelian', [pembelianController::class, "store"])->name('pembelian.store');
+    Route::get('/pembelian/{id}/edit', [pembelianController::class, "edit"])->name('pembelian.edit');
+    Route::put('/pembelian/{id}', [pembelianController::class, "update"])->name('pembelian.update');
+    Route::delete('/pembelian/{id}', [pembelianController::class, "destroy"])->name('pembelian.destroy');
 
     //pimpinan
     Route::get('/pimpinan_page', [pimpinanController::class, "index"])->name('pimpinan_page');

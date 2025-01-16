@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\pembelian;
 
 use App\Http\Controllers\Controller;
+use App\Models\Barang;
+use App\Models\Pembelian;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class pembelianController extends Controller
 {
@@ -12,7 +16,9 @@ class pembelianController extends Controller
      */
     public function index()
     {
-        //
+        $barangs = Barang::all();
+        $pembelians = Pembelian::with('barang')->get();
+        return view('adminPage.pembelian.index', compact('barangs', 'pembelians'));
     }
 
     /**
@@ -28,7 +34,30 @@ class pembelianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'barang_id' => 'required|exists:barangs,id',
+            'jumlah' => 'required|min:1|numeric',
+            'harga_barang' => 'required|min:1|numeric',
+        ]);
+
+        $total_harga = $request->jumlah * $request->harga_barang;
+
+        DB::transaction(function () use ($request, $total_harga) {
+            Pembelian::create([
+                'barang_id' => $request->barang_id,
+                'jumlah' => $request->jumlah,
+                'total_harga' => $total_harga,
+            ]);
+
+            Transaksi::create([
+                'barang_id' => $request->barang_id,
+                'jenis' => 'masuk',
+                'jumlah' => $request->jumlah,
+                'harga_satuan' => $request->harga_barang,
+            ]);
+        });
+
+        return redirect()->route('pembelian')->with('success', 'Pembelian berhasil ditambahkan.');
     }
 
     /**
@@ -44,7 +73,10 @@ class pembelianController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pembelian = Pembelian::with('barang')->findOrFail($id);
+        $pembelians = Pembelian::with('barang')->get();
+
+        return view('adminPage.pembelian.edit', compact('pembelian', 'pembelians'));
     }
 
     /**
@@ -52,7 +84,20 @@ class pembelianController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pembelian = Pembelian::findOrFail($id);
+
+        $request->validate([
+            'barang_id' => 'required|exists:barangs,id',
+            'jumlah' => 'required|min:1|numeric',
+            'harga_barang' => 'required|min:1|numeric',
+        ]);
+
+        $pembelian->jumlah = $request->jumlah;
+        $pembelian->total_harga = $request->jumlah * $request->harga_barang;
+
+        $pembelian->save();
+
+        return redirect()->route('pembelian')->with('success', 'Pembelian berhasil diubah');
     }
 
     /**
@@ -60,6 +105,9 @@ class pembelianController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pembelian = Pembelian::findOrFail($id);
+        $pembelian->delete();
+
+        return redirect()->route('pembelian')->with('success', 'Pembelian berhasil dihapus');
     }
 }
