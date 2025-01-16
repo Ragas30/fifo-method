@@ -13,7 +13,7 @@
             </div>
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h2 class="text-2xl font-fantasy font-semibold mb-2">Barang Masuk</h2>
-                <p class="text-gray-600">Total Barang Masuk : <span class="font-serif"></span> </p>
+                <p class="text-gray-600">Total Barang Masuk : <span class="font-serif">{{ $pembelians }}</span> </p>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h2 class="text-2xl font-fantasy font-semibold mb-2">Barang Keluar</h2>
