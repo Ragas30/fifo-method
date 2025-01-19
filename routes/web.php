@@ -4,14 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\home\homeController;
 use App\Http\Controllers\auth\loginController;
+use App\Http\Controllers\laporan\laporanBarang;
 use App\Http\Controllers\auth\registerController;
 use App\Http\Controllers\admin\dashboardController;
 use App\Http\Controllers\pimpinan\laporanController;
 use App\Http\Controllers\pimpinan\pimpinanController;
+use App\Http\Controllers\pembelian\pembelianController;
 use App\Http\Controllers\transaksi\transaksiController;
 use App\Http\Controllers\penjualan\PenjualansController;
 use App\Http\Controllers\inputBarang\inputBarangController;
-use App\Http\Controllers\pembelian\pembelianController;
 use App\Http\Controllers\transaksi\listTransaksiController;
 
 Route::middleware('guest')->group(function () {
@@ -63,4 +64,7 @@ Route::middleware('auth')->group(function () {
     //pimpinan
     Route::get('/pimpinan_page', [pimpinanController::class, "index"])->name('pimpinan_page');
     Route::get('/laporan_pimpinan', [laporanController::class, "laporan"])->name('laporan_pimpinan');
+
+    //laporan
+    Route::get('/laporan_barang', [laporanBarang::class, "index"])->name('laporan_barang');
 });
