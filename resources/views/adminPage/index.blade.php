@@ -8,7 +8,7 @@
     @if (auth()->user()->level === 'admin')
         <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-cursive font-semibold mb-2">Products</h2>
+                <h2 class="text-2xl font-cursive font-semibold mb-2">Produk</h2>
                 <p class="text-gray-600">Total Barang: <span class="font-serif">{{ $barangs }}</span></p>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-lg">

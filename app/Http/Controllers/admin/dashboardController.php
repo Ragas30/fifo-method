@@ -15,8 +15,8 @@ class dashboardController extends Controller
     {
         $barangs = Barang::count();
         $users = User::all();
-        $penjualans = Penjualan::all();
-        $pembelians = Pembelian::all();
+        $penjualans = Penjualan::count();
+        $pembelians = Pembelian::count();
 
 
         return view('adminPage.index', compact('barangs', 'users', 'penjualans', 'pembelians'));

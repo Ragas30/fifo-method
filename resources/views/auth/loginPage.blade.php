@@ -20,7 +20,7 @@
 
 <body class="background min-h-screen flex justify-center items-center">
     <div class="flex flex-col bg-green-500 p-8 rounded-lg shadow-2xl">
-        <form action="{{ route('login') }}" method="POST" class="space-y-6">
+        <form action="{{ route('loginPost') }}" method="POST" class="space-y-6">
             @csrf
             <div class="mt-4">
                 <label for="email" class="block text-white font-semibold">Email</label>
@@ -47,4 +47,3 @@
 </body>
 
 </html>
-
