@@ -14,6 +14,8 @@ use App\Http\Controllers\transaksi\transaksiController;
 use App\Http\Controllers\penjualan\PenjualansController;
 use App\Http\Controllers\inputBarang\inputBarangController;
 use App\Http\Controllers\transaksi\listTransaksiController;
+use App\Models\Barang;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 Route::middleware('guest')->group(function () {
     Route::get('/', [homeController::class, "index"])->name('home');
@@ -26,6 +28,12 @@ Route::middleware('guest')->group(function () {
     //login
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('loginPost');
+
+    Route::get('/test-print', function () {
+        $barangs = Barang::all();
+        $pdf = Pdf::loadView('pimpinan.laporan.index', compact('barangs'));
+        return $pdf->download('test_print.pdf');
+    });
 });
 
 Route::middleware('auth')->group(function () {
