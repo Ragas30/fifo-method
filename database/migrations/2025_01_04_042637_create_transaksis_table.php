@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaksis', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('barang_id')->constrained('barangs')->onDelete('cascade');
+        Schema::create('transaksi', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('barang_id')->unsigned();
+            $table->foreign('barang_id')->references('id')->on('barang')->onDelete('cascade');
             $table->enum('jenis', ['masuk', 'keluar']);
             $table->integer('jumlah');
             $table->decimal('harga_satuan', 10, 2);

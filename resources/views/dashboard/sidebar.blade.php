@@ -34,7 +34,7 @@
                 <a href="{{ route('tampil_barang') }}"
                     class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">Data
                     Barang</a>
-                <a href="{{ route('transaksi') }}"
+                <a href="{{ route('listTransaksi') }}"
                     class="block py-2 px-4 rounded-md text-white hover:bg-lime-600">Transaksi</a>
             </div>
         @endif

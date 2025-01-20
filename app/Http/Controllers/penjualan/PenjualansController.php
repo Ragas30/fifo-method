@@ -29,6 +29,8 @@ class PenjualansController extends Controller
         $total_harga = $request->jumlah * $request->harga_barang;
 
         DB::transaction(function () use ($request, $total_harga) {
+            Barang::where('id', $request->barang_id)->decrement('stok', $request->jumlah);
+
             Penjualan::create([
                 'barang_id' => $request->barang_id,
                 'jumlah' => $request->jumlah,
@@ -80,4 +82,3 @@ class PenjualansController extends Controller
         return redirect()->route('penjualan')->with('success', 'Penjualan berhasil dihapus');
     }
 }
-

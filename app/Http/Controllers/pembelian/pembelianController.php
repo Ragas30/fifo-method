@@ -43,6 +43,8 @@ class pembelianController extends Controller
         $total_harga = $request->jumlah * $request->harga_barang;
 
         DB::transaction(function () use ($request, $total_harga) {
+            Barang::where('id', $request->barang_id)->increment('stok', $request->jumlah);
+
             Pembelian::create([
                 'barang_id' => $request->barang_id,
                 'jumlah' => $request->jumlah,

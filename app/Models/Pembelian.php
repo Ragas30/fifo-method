@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pembelian extends Model
 {
-    protected $table = 'pembelians';
+    protected $table = 'pembelian';
     protected $fillable = ['barang_id', 'jumlah', 'total_harga'];
 
     public function barang()
