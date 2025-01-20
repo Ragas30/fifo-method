@@ -1,3 +1,8 @@
 Edit tampilan PDF yang di download di folder
 
 resource/views/cetakLaporan/*
+
+new task:
+1. penjualan dan pembelian tidak sincron dengan data barang
+2. setiap penjualan mempengaruhi data di pembelian berdasarkan tanggal
+3. terapkan methode fifo (first in first out)
