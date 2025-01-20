@@ -1,6 +1,13 @@
 @extends('dashboard.layout')
 @section('title', 'Pembelian')
 @section('content')
+    <header class="flex justify-between md:flex-row flex-col md:items-center items-start">
+        <h1 class="text-3xl font-bold md:mb-0 mb-4">Data Pembelian</h1>
+        <div>
+            <a href="{{ route('print.data.pembelian') }}"
+                class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Simpan Data Pembelian</a>
+        </div>
+    </header>
     <div class="flex justify-start items-center border-sm">
         <form action="{{ route('pembelian.store') }}" method="POST" class="space-y-4">
             @csrf

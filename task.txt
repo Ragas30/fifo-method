@@ -1,1 +1,3 @@
-1. buat fitur laporan / export otomatis jadi pdf di setiap data (barang, penjualan, pembelian)
+Edit tampilan PDF yang di download di folder
+
+resource/views/cetakLaporan/*

@@ -1,6 +1,13 @@
 @extends('dashboard.layout')
 @section('title', 'Penjualan')
 @section('content')
+    <header class="flex justify-between md:flex-row flex-col md:items-center items-start">
+        <h1 class="text-3xl font-bold md:mb-0 mb-4">Data Penjualan</h1>
+        <div>
+            <a href="{{ route('print.data.penjualan') }}"
+                class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Simpan Data Penjualan</a>
+        </div>
+    </header>
     <div class="flex justify-start items-center border-sm">
         <form action="{{ route('penjualan.store') }}" method="POST" class="space-y-4">
             @csrf

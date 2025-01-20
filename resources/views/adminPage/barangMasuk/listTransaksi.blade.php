@@ -1,6 +1,14 @@
 @extends('dashboard.layout')
 @section('title', 'Transaksi Barang')
 @section('content')
+    <header class="flex justify-between md:flex-row flex-col md:items-center items-start">
+        <h1 class="text-3xl font-bold md:mb-0 mb-4">Data Barang</h1>
+        <div>
+            <a href="{{ route('print.list.transaksi') }}"
+                class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Simpan List Transaksi</a>
+        </div>
+    </header>
+
     <div class="flex justify-center items-center border-sm">
         <table class="w-full">
             <thead>
