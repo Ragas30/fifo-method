@@ -36,33 +36,41 @@
             </button>
         </form>
     </div>
-    <table>
-        <thead>
-            <th>No</th>
-            <th>Nama Barang</th>
-            <th>Jumlah Barang</th>
-            <th>Harga Barang</th>
-            <th>Total Harga</th>
-            <th>Aksi</th>
-        </thead>
-        <tbody>
-            <tr>
-                @foreach ($pembelians as $index => $pembelian)
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $pembelian->barang->nama_barang }}</td>
-                    <td>{{ $pembelian->jumlah }}</td>
-                    <td>{{ $pembelian->total_harga / $pembelian->jumlah }}</td>
-                    <td>{{ $pembelian->total_harga }}</td>
-                    <td>
-                        <a href="{{ route('pembelian.edit', $pembelian->id) }}">Edit</a>
-                        <form action="{{ route('pembelian.destroy', $pembelian->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button>Hapus</button>
-                        </form>
-                    </td>
-                @endforeach
-            </tr>
-        </tbody>
-    </table>
+    <div class="overflow-x-auto">
+        <div class="mt-4">
+            <table class="table-auto w-full">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="px-4 py-2 text-center">No</th>
+                        <th class="px-4 py-2 text-center">Nama Barang</th>
+                        <th class="px-4 py-2 text-center">Jumlah Barang</th>
+                        <th class="px-4 py-2 text-center">Harga Barang</th>
+                        <th class="px-4 py-2 text-center">Total Harga</th>
+                        <th class="px-4 py-2 text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @foreach ($pembelians as $index => $pembelian)
+                        <tr class="hover:bg-gray-100 border-b border-gray-200">
+                            <td class="px-4 py-2">{{ $loop->iteration }}</td>
+                            <td class="px-4 py-2">{{ $pembelian->barang->nama_barang }}</td>
+                            <td class="px-4 py-2">{{ $pembelian->jumlah }}</td>
+                            <td class="px-4 py-2">{{ $pembelian->total_harga / $pembelian->jumlah }}</td>
+                            <td class="px-4 py-2">{{ $pembelian->total_harga }}</td>
+                            <td class="px-4 py-2 flex justify-center gap-2">
+                                <a href="{{ route('pembelian.edit', $pembelian->id) }}"
+                                    class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Edit</a>
+                                <form action="{{ route('pembelian.destroy', $pembelian->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button
+                                        class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 @endsection

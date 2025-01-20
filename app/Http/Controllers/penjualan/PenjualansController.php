@@ -21,7 +21,7 @@ class PenjualansController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'barang_id' => 'required|exists:barangs,id',
+            'barang_id' => 'required|exists:barang,id',
             'jumlah' => 'required|min:1|numeric',
             'harga_barang' => 'required|min:1|numeric',
         ]);
@@ -61,7 +61,7 @@ class PenjualansController extends Controller
         $penjualan = Penjualan::findOrFail($id);
 
         $request->validate([
-            'barang_id' => 'required|exists:barangs,id',
+            'barang_id' => 'required|exists:barang,id',
             'jumlah' => 'required|min:1|numeric',
             'harga_barang' => 'required|min:1|numeric',
         ]);

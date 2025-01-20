@@ -17,7 +17,7 @@
                     required>
                     <option disabled selected>Pilih Barang</option>
                     @foreach ($barangs as $barang)
-                        <option value="{{ $barang->id }}">{{ $barang->nama_barang }}</option>
+                        <option value="{{ $barang->id }}" data-harga="{{ $barang->harga_jual }}">{{ $barang->nama_barang }}</option>
                     @endforeach
                 </select>
             </div>
@@ -29,40 +29,55 @@
             <div>
                 <label for="barang_id" class="block text-sm font-medium text-text-white">Harga Barang</label>
                 <input type="number" name="harga_barang" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-                    required>
+                    required readonly>
             </div>
             <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">
                 Submit
             </button>
         </form>
     </div>
-    <table>
-        <thead>
-            <th>No</th>
-            <th>Nama Barang</th>
-            <th>Jumlah Barang</th>
-            <th>Harga Barang</th>
-            <th>Total Harga</th>
-            <th>Aksi</th>
-        </thead>
-        <tbody>
-            <tr>
+    <div class="overflow-x-auto mt-4">
+        <table class="table-auto w-full">
+            <thead>
+                <tr class="bg-gray-100">
+                    <th class="px-4 py-2 text-center">No</th>
+                    <th class="px-4 py-2 text-center">Nama Barang</th>
+                    <th class="px-4 py-2 text-center">Jumlah Barang</th>
+                    <th class="px-4 py-2 text-center">Harga Barang</th>
+                    <th class="px-4 py-2 text-center">Total Harga</th>
+                    <th class="px-4 py-2 text-center">Aksi</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
                 @foreach ($penjualans as $index => $penjualan)
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $penjualan->barang->nama_barang }}</td>
-                    <td>{{ $penjualan->jumlah }}</td>
-                    <td>{{ $penjualan->total_harga / $penjualan->jumlah }}</td>
-                    <td>{{ $penjualan->total_harga }}</td>
-                    <td>
-                        <a href="{{ route('penjualan.edit', $penjualan->id) }}">Edit</a>
-                        <form action="{{ route('penjualan.destroy', $penjualan->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button>Hapus</button>
-                        </form>
-                    </td>
+                    <tr class="hover:bg-gray-100 border-b border-gray-200">
+                        <td class="px-4 py-2">{{ $loop->iteration }}</td>
+                        <td class="px-4 py-2">{{ $penjualan->barang->nama_barang }}</td>
+                        <td class="px-4 py-2">{{ $penjualan->jumlah }}</td>
+                        <td class="px-4 py-2">{{ $penjualan->barang->harga_jual }}</td>
+                        <td class="px-4 py-2">{{ $penjualan->total_harga }}</td>
+                        <td class="px-4 py-2 flex justify-center gap-2">
+                            <a href="{{ route('penjualan.edit', $penjualan->id) }}"
+                                class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Edit</a>
+                            <form action="{{ route('penjualan.destroy', $penjualan->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 w-full sm:w-auto">Hapus</button>
+                            </form>
+                        </td>
+                    </tr>
                 @endforeach
-            </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        const select = document.querySelector('select[name="barang_id"]');
+        const harga = document.querySelector('input[name="harga_barang"]');
+
+        select.addEventListener('change', function() {
+            harga.value = select.options[select.selectedIndex].getAttribute('data-harga');
+        });
+    </script>
 @endsection
+

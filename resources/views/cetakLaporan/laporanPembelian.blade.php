@@ -36,24 +36,22 @@
     <h1>Laporan Data Pembelian</h1>
     <hr>
     <table class="table">
-        {{-- <tr>
+        <tr>
             <th>No</th>
             <th>Nama Barang</th>
-            <th>Stok</th>
-            <th>Harga Beli</th>
-            <th>Harga Jual</th>
-            <th>Keterangan</th>
+            <th>Jumlah</th>
+            <th>Harga</th>
+            <th>Tanggal</th>
         </tr>
-        @foreach ($barangs as $index => $barang)
+        @foreach ($pembelians as $index => $pembelian)
             <tr>
                 <td>{{ $index + 1 }}</td>
-                <td>{{ $barang->nama_barang }}</td>
-                <td>{{ $barang->stok }}</td>
-                <td>{{ $barang->harga_beli }}</td>
-                <td>{{ $barang->harga_jual }}</td>
-                <td>{{ $barang->keterangan }}</td>
+                <td>{{ $pembelian->barang->nama_barang }}</td>
+                <td>{{ $pembelian->jumlah }}</td>
+                <td>{{ $pembelian->total_harga }}</td>
+                <td>{{ $pembelian->created_at->format('d-m-Y') }}</td>
             </tr>
-        @endforeach --}}
+        @endforeach
     </table>
 </body>
 
