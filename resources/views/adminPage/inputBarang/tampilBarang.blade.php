@@ -6,9 +6,11 @@
         <div>
             <a href="{{ route('print.data.barang') }}"
                 class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Simpan Data Barang</a>
-            <a href="{{ route('input_barang') }}"
-                class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Tambah
-                Barang</a>
+            @if (auth()->user()->level !== 'pimpinan')
+                <a href="{{ route('input_barang') }}"
+                    class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Tambah
+                    Barang</a>
+            @endif
         </div>
     </header>
 
