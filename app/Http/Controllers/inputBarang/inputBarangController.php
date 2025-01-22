@@ -8,14 +8,23 @@ use App\Http\Controllers\Controller;
 
 class inputBarangController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('adminPage.inputBarang.index');
+        $search = $request->query('search');
+        $barangs = Barang::where('nama_barang', 'LIKE', "%{$search}%")
+            ->orWhere('stok', 'LIKE', "%{$search}%")
+            ->orWhere('harga_beli', 'LIKE', "%{$search}%")
+            ->orWhere('harga_jual', 'LIKE', "%{$search}%")
+            ->orWhere('satuan', 'LIKE', "%{$search}%")
+            ->orWhere('keterangan', 'LIKE', "%{$search}%")
+            ->get();
+
+        return view('adminPage.inputBarang.index', compact('barangs', 'search'));
     }
 
     public function tampil()
     {
-        $barangs = barang::all(); // Menambahkan pengambilan data barang dari database
+        $barangs = Barang::all(); // Menambahkan pengambilan data barang dari database
         return view('adminPage.inputBarang.tampilBarang', compact('barangs'));
     }
 

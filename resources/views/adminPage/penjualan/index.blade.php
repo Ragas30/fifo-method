@@ -5,7 +5,7 @@
         <h1 class="text-3xl font-bold md:mb-0 mb-4">Data Penjualan</h1>
         <div>
             <a href="{{ route('print.data.penjualan') }}"
-                class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Simpan Data Penjualan</a>
+                class="bg-white text-black font-bold px-4 py-2 rounded-md hover:bg-slate-700">Simpan Data Penjualan</a>
         </div>
     </header>
     <div class="flex justify-start items-center border-sm">
@@ -17,7 +17,8 @@
                     required>
                     <option disabled selected>Pilih Barang</option>
                     @foreach ($barangs as $barang)
-                        <option value="{{ $barang->id }}" data-harga="{{ $barang->harga_jual }}">{{ $barang->nama_barang }}</option>
+                        <option value="{{ $barang->id }}" data-harga="{{ $barang->harga_jual }}">
+                            {{ $barang->nama_barang }}</option>
                     @endforeach
                 </select>
             </div>
@@ -31,13 +32,13 @@
                 <input type="number" name="harga_barang" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
                     required readonly>
             </div>
-            <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">
+            <button type="submit" class="bg-white text-black px-4 py-2 rounded-md hover:bg-slate-700">
                 Submit
             </button>
         </form>
     </div>
     <div class="overflow-x-auto mt-4">
-        <table class="table-auto w-full">
+        <table class="table-auto w-full sm:w-auto">
             <thead>
                 <tr class="bg-gray-100">
                     <th class="px-4 py-2 text-center">No</th>
@@ -56,9 +57,9 @@
                         <td class="px-4 py-2">{{ $penjualan->jumlah }}</td>
                         <td class="px-4 py-2">{{ $penjualan->barang->harga_jual }}</td>
                         <td class="px-4 py-2">{{ $penjualan->total_harga }}</td>
-                        <td class="px-4 py-2 flex justify-center gap-2">
+                        <td class="px-4 py-2 flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center">
                             <a href="{{ route('penjualan.edit', $penjualan->id) }}"
-                                class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Edit</a>
+                                class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700 w-full sm:w-auto">Edit</a>
                             <form action="{{ route('penjualan.destroy', $penjualan->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
@@ -80,4 +81,3 @@
         });
     </script>
 @endsection
-

@@ -4,10 +4,17 @@
     <header class="flex items-center justify-between mb-4">
         <h1 class="text-3xl font-bold">Data Transaksi Barang</h1>
         <a href="{{ route('print.list.transaksi') }}"
-            class="bg-violet-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-violet-700">
+            class="bg-white text-black font-bold px-4 py-2 rounded-md shadow-md hover:bg-slate-700">
             Simpan List Transaksi
         </a>
     </header>
+
+    {{-- <form action="{{ route('transaksi.search') }}" method="GET">
+        <div class="flex items-center mb-4">
+            <input type="text" name="search" class="px-4 py-2 border rounded-md" placeholder="Cari berdasarkan nama barang">
+            <button type="submit" class="bg-white text-black font-bold px-4 py-2 rounded-md shadow-md hover:bg-slate-700">Cari</button>
+        </div>
+    </form> --}}
 
     <div class="overflow-x-auto">
         <table class="table-auto w-full">

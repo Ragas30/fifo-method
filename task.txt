@@ -6,3 +6,6 @@ new task:
 1. penjualan dan pembelian tidak sincron dengan data barang
 2. setiap penjualan mempengaruhi data di pembelian berdasarkan tanggal
 3. terapkan methode fifo (first in first out)
+
+new task : 22/01/2025
+1. tambahkan fitur cari di setiap menu di admin 
