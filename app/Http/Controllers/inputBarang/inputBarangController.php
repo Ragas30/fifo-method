@@ -19,7 +19,7 @@ class inputBarangController extends Controller
             ->orWhere('keterangan', 'LIKE', "%{$search}%")
             ->get();
 
-        return view('adminPage.inputBarang.index', compact('barangs', 'search'));
+        return view('adminPage.inputBarang.tampilBarang', compact('barangs', 'search'));
     }
 
     public function tampil()

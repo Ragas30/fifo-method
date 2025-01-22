@@ -14,7 +14,7 @@
         </div>
     </header>
 
-    <form action="{{ route('tampil_barang') }}" method="GET">
+    <form action="{{ route('get_barang') }}" method="GET">
         <div class="flex items-center gap-2">
             <input type="text" name="search" class="px-4 py-2 rounded-md border" placeholder="Cari Barang"
                 value="{{ request()->query('search') }}">
@@ -41,7 +41,7 @@
                     <tr>
                         <td class="border px-4 py-2">{{ $loop->iteration }}</td>
                         <td class="border px-4 py-2">{{ $barang->nama_barang }}</td>
-                        <td class="border px-4 py-2">{{ $barang->stok }}</td>
+                        <td class="border px-4 py-2">{{ $barang->stok }} {{ $barang->satuan }}</td>
                         <td class="border px-4 py-2">{{ $barang->harga_beli }}</td>
                         <td class="border px-4 py-2">{{ $barang->harga_jual }}</td>
                         <td class="border px-4 py-2">{{ $barang->keterangan }}</td>
