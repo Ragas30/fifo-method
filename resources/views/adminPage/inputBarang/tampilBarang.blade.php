@@ -24,7 +24,9 @@
                     <th class="px-4 py-2">Harga Beli</th>
                     <th class="px-4 py-2">Harga Jual</th>
                     <th class="px-4 py-2">Keterangan</th>
-                    <th class="px-4 py-2">Aksi</th>
+                    @if (auth()->user()->level !== 'pimpinan')
+                        <th class="px-4 py-2">Aksi</th>
+                    @endif
                 </tr>
             </thead>
             <tbody>
@@ -36,15 +38,18 @@
                         <td class="border px-4 py-2">{{ $barang->harga_beli }}</td>
                         <td class="border px-4 py-2">{{ $barang->harga_jual }}</td>
                         <td class="border px-4 py-2">{{ $barang->keterangan }}</td>
-                        <td class="border px-4 py-2">
-                            <a href="{{ route('edit_barang', $barang->id) }}"
-                                class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Edit</a>
-                            <a href="{{ route('delete_barang', $barang->id) }}"
-                                class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700">Delete</a>
-                        </td>
+                        @if (auth()->user()->level !== 'pimpinan')
+                            <td class="border px-4 py-2">
+                                <a href="{{ route('edit_barang', $barang->id) }}"
+                                    class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Edit</a>
+                                <a href="{{ route('delete_barang', $barang->id) }}"
+                                    class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700">Delete</a>
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 @endsection
+
