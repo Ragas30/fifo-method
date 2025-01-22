@@ -31,8 +31,8 @@
                 <p class="text-gray-600">Total Barang: <span class="font-serif">{{ $barangs }}</span></p>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-fantasy font-semibold mb-2">Orders</h2>
-                <p class="text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <h2 class="text-2xl font-fantasy font-semibold mb-2">Transaksi</h2>
+                <p class="text-gray-600">Total Transaksi: <span class="font-serif">{{ $transaksis }}</span></p>
             </div>
         </div>
     @endif
