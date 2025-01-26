@@ -8,6 +8,8 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('logo/LOGO.png') }}">
     <title>@yield('title')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body class="bg-green-700">

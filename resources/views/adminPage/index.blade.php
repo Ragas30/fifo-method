@@ -37,4 +37,77 @@
         </div>
     @endif
 
+    <div class="bg-white p-6 rounded-lg shadow-lg mt-8">
+        <h2 class="text-xl font-semibold mb-4">Grafik Data Barang</h2>
+        <canvas id="chartBarang" width="400" height="200"></canvas>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg mt-8">
+        <h2 class="text-xl font-semibold mb-4">Grafik Data Transaksi</h2>
+        <canvas id="chartTransaksi" width="400" height="200"></canvas>
+    </div>
+
+    <script>
+        // Grafik Data Barang
+        const ctxBarang = document.getElementById('chartBarang').getContext('2d');
+        const chartBarang = new Chart(ctxBarang, {
+            type: 'bar',
+            data: {
+                labels: ['Produk', 'Barang Masuk', 'Barang Keluar'],
+                datasets: [{
+                    label: 'Jumlah',
+                    data: [{{ $barangs }}, {{ $pembelians }}, {{ $penjualans }}],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Grafik Data Transaksi
+        const ctxTransaksi = document.getElementById('chartTransaksi').getContext('2d');
+        const chartTransaksi = new Chart(ctxTransaksi, {
+            type: 'pie',
+            data: {
+                labels: ['Transaksi Barang Masuk', 'Transaksi Barang Keluar'],
+                datasets: [{
+                    label: 'Jumlah Transaksi',
+                    data: [{{ $pembelians }}, {{ $penjualans }}],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+    </script>
 @endsection
+
