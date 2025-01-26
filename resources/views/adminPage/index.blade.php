@@ -37,14 +37,15 @@
         </div>
     @endif
 
-    <div class="bg-white p-6 rounded-lg shadow-lg mt-8">
-        <h2 class="text-xl font-semibold mb-4">Grafik Data Barang</h2>
-        <canvas id="chartBarang" width="400" height="200"></canvas>
-    </div>
-
-    <div class="bg-white p-6 rounded-lg shadow-lg mt-8">
-        <h2 class="text-xl font-semibold mb-4">Grafik Data Transaksi</h2>
-        <canvas id="chartTransaksi" width="400" height="200"></canvas>
+    <div class="flex flex-row gap-4 mt-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-1/2">
+            <h2 class="text-xl font-semibold mb-4">Grafik Data Barang</h2>
+            <canvas id="chartBarang" width="300" height="150"></canvas>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg w-1/2">
+            <h2 class="text-xl font-semibold mb-4">Grafik Data Transaksi</h2>
+            <canvas id="chartTransaksi" width="300" height="150"></canvas>
+        </div>
     </div>
 
     <script>
