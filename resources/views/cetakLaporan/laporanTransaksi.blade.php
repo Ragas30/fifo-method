@@ -57,7 +57,7 @@
         <hr>
         <p>Jl. Adinegoro, Lubuk Buaya, Kec. Koto Tangah, Kota Padang, Sumatera Barat 25586 </p>
     </div>
-    <h2 style="margin-top: 20px">Tanggal Cetak {{ $tanggal }}</h2>
+    <h5 style="margin-top: 20px">Tanggal Cetak {{ $tanggal }}</h5>
     <hr>
     <table class="table">
         <tr>
