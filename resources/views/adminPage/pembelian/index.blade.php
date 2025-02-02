@@ -55,7 +55,7 @@
                             <tr class="hover:bg-gray-100 border-b border-gray-200">
                                 <td class="px-4 py-2">{{ $loop->iteration }}</td>
                                 <td class="px-4 py-2">{{ $pembelian->barang->nama_barang }}</td>
-                                <td class="px-4 py-2">{{ $pembelian->jumlah }}</td>
+                                <td class="px-4 py-2">{{ $pembelian->jumlah }} {{ $pembelian->barang->satuan }}</td>
                                 <td class="px-4 py-2">{{ $pembelian->total_harga / $pembelian->jumlah }}</td>
                                 <td class="px-4 py-2">{{ $pembelian->total_harga }}</td>
                                 <td class="px-4 py-2 flex justify-center gap-2 sm:w-auto w-full">
