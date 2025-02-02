@@ -54,7 +54,7 @@
                     <tr class="hover:bg-gray-100 border-b border-gray-200">
                         <td class="px-4 py-2">{{ $loop->iteration }}</td>
                         <td class="px-4 py-2">{{ $penjualan->barang->nama_barang }}</td>
-                        <td class="px-4 py-2">{{ $penjualan->jumlah }} {{ $penjualan->barang->satuan } }}</td>
+                        <td class="px-4 py-2">{{ $penjualan->jumlah }} {{ $penjualan->barang->satuan }}</td>
                         <td class="px-4 py-2">{{ $penjualan->barang->harga_jual }}</td>
                         <td class="px-4 py-2">{{ $penjualan->total_harga }}</td>
                         <td class="px-4 py-2 flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center">
