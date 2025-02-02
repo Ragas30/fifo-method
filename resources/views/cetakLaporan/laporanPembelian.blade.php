@@ -58,7 +58,7 @@
         <hr>
         <p>Jl. Adinegoro, Lubuk Buaya, Kec. Koto Tangah, Kota Padang, Sumatera Barat 25586 </p>
     </div>
-    <h2 style="margin-top: 20px">Tanggal Cetak{{ $tanggal }}</h2>
+    <h2 style="margin-top: 20px">Tanggal Cetak {{ $tanggal }}</h2>
     <hr>
     <table class="table">
         <tr>
@@ -66,6 +66,7 @@
             <th>Nama Barang</th>
             <th>Jumlah</th>
             <th>Harga</th>
+            <th>Total Harga</th>
             <th>Tanggal</th>
         </tr>
         @foreach ($pembelians as $index => $pembelian)
@@ -73,6 +74,7 @@
                 <td>{{ $index + 1 }}</td>
                 <td>{{ $pembelian->barang->nama_barang }}</td>
                 <td>{{ $pembelian->jumlah }}{{ $pembelian->barang->satuan }}</td>
+                <td>{{ $pembelian->total_harga / $pembelian->jumlah }}</td>
                 <td>{{ $pembelian->total_harga }}</td>
                 <td>{{ $pembelian->created_at->format('d-m-Y') }}</td>
             </tr>
