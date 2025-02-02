@@ -38,7 +38,7 @@
         </form>
     </div>
     <div class="overflow-x-auto mt-4">
-        <table class="table-auto w-full sm:w-auto">
+        <table class="table-auto w-full sm:table">
             <thead>
                 <tr class="bg-gray-100">
                     <th class="px-4 py-2 text-center">No</th>

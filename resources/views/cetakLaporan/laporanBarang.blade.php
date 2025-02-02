@@ -6,33 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Laporan Data Barang</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         .table {
             border-collapse: collapse;
             width: 100%;
+            margin-top: 20px;
         }
 
-        .table td, th {
+        .table td,
+        th {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 12px;
+            text-align: center;
         }
 
-        .table tr:nth-child(even) {
-            background-color: #f2f2f2;
+        .table tr:nth-child(odd) {
+            background-color: #f9f9f9;
         }
 
         .table th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #4CAF50;
+            background-color: #333;
             color: white;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .header p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .h2 {
+            text-align: right;
         }
     </style>
 </head>
 
 <body>
-    <h1>Laporan Data Barang</h1>
+    <div style="display: flex; justify-content: center; align-items: center; text-align: center;">
+        <h1 style="font-weight: bold;">Laporan Data Barang</h1>
+    </div>
+    <div class="header">
+        <h1>CV. Vega Kontruksi Advertising</h1>
+        <hr>
+        <p>Jl. Adinegoro, Lubuk Buaya, Kec. Koto Tangah, Kota Padang, Sumatera Barat 25586 </p>
+    </div>
+    <h2>Tanggal Cetak {{ $tanggal }}</h2>
     <hr>
     <table class="table">
         <tr>
@@ -47,7 +76,7 @@
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td>{{ $barang->nama_barang }}</td>
-                <td>{{ $barang->stok }}</td>
+                <td>{{ $barang->stok }}{{ $barang->satuan }}</td>
                 <td>{{ $barang->harga_beli }}</td>
                 <td>{{ $barang->harga_jual }}</td>
                 <td>{{ $barang->keterangan }}</td>
@@ -57,4 +86,3 @@
 </body>
 
 </html>
-

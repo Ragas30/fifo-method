@@ -5,7 +5,7 @@
         <h1 class="text-3xl font-bold md:mb-0 mb-4">Data Pembelian</h1>
         <div>
             <a href="{{ route('print.data.pembelian') }}"
-                class="bg-white text-black px-4 py-2 rounded-md hover:bg--700">Simpan Data Pembelian</a>
+                class="bg-white text-black px-4 py-2 rounded-md hover:bg-slate-700">Simpan Data Pembelian</a>
         </div>
     </header>
     <div class="flex justify-start items-center border-sm">
@@ -14,10 +14,10 @@
             <div>
                 <label for="barang_id" class="block text-sm font-medium text-text-white">Pilih Barang</label>
                 <select name="barang_id" id="barang_id" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-                    required>
+                    required onchange="getHargaBarang(this)">
                     <option disabled selected>Pilih Barang</option>
                     @foreach ($barangs as $barang)
-                        <option value="{{ $barang->id }}">{{ $barang->nama_barang }}</option>
+                        <option value="{{ $barang->id }}" data-harga="{{ $barang->harga_beli }}">{{ $barang->nama_barang }}</option>
                     @endforeach
                 </select>
             </div>
@@ -28,8 +28,8 @@
             </div>
             <div>
                 <label for="barang_id" class="block text-sm font-medium text-text-white">Harga Barang</label>
-                <input type="number" name="harga_barang" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-                    required>
+                <input type="number" name="harga_barang" id="harga_barang" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
+                    required readonly>
             </div>
             <button type="submit" class="bg-white text-black font-bold px-4 py-2 rounded-md hover:bg-slate-700">
                 Submit
@@ -76,3 +76,11 @@
         </div>
     </div>
 @endsection
+
+<script>
+    function getHargaBarang(select) {
+        const hargaBarang = select.options[select.selectedIndex].getAttribute('data-harga');
+        document.getElementById('harga_barang').value = hargaBarang;
+    }
+</script>
+
