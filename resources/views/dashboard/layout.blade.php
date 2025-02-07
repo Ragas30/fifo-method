@@ -12,7 +12,7 @@
 
 </head>
 
-<body class="bg-green-700">
+<body>
     <div class="flex h-screen">
         @include('dashboard.sidebar')
         <main class="flex-1 p-4 overflow-y-scroll">
