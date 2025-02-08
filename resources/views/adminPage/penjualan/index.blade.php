@@ -1,14 +1,14 @@
 @extends('dashboard.layout')
 @section('title', 'Penjualan')
 @section('content')
-    <header class="flex justify-between md:flex-row flex-col md:items-center items-start">
+    <header class="flex justify-between md:flex-row flex-col md:items-center items-start mb-4">
         <h1 class="text-3xl font-bold md:mb-0 mb-4">Data Penjualan</h1>
         <div>
             <a href="{{ route('print.data.penjualan') }}"
-                class="bg-white text-black font-bold px-4 py-2 rounded-md hover:bg-slate-700">Simpan Data Penjualan</a>
+                class="bg-purple-600 text-black font-bold px-4 py-2 rounded-md hover:bg-slate-700">Simpan Data Penjualan</a>
         </div>
     </header>
-    <div class="flex justify-start items-center border-sm">
+    <div class="bg-slate-200 p-4 rounded-md shadow-md flex justify-start items-center border-sm">
         <form action="{{ route('penjualan.store') }}" method="POST" class="space-y-4">
             @csrf
             <div>

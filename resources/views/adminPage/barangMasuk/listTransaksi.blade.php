@@ -4,7 +4,7 @@
     <header class="flex items-center justify-between mb-4">
         <h1 class="text-3xl font-bold">Data Transaksi Barang</h1>
         <a href="{{ route('print.list.transaksi') }}"
-            class="bg-white text-black font-bold px-4 py-2 rounded-md shadow-md hover:bg-slate-700">
+            class="bg-purple-600 text-black font-bold px-4 py-2 rounded-md shadow-md hover:bg-slate-700">
             Simpan List Transaksi
         </a>
     </header>

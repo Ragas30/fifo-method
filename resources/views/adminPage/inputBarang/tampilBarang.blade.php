@@ -5,10 +5,10 @@
         <h1 class="text-3xl font-bold md:mb-0 mb-4">Data Barang</h1>
         <div>
             <a href="{{ route('print.data.barang') }}"
-                class="bg-white text-black font-bold px-4 py-2 rounded-md hover:bg-slate-400">Simpan Data Barang</a>
+                class="bg-purple-600 text-black font-bold px-4 py-2 rounded-md hover:bg-slate-400">Simpan Data Barang</a>
             @if (auth()->user()->level !== 'pimpinan')
                 <a href="{{ route('input_barang') }}"
-                    class="bg-white text-black font-bold px-4 py-2 rounded-md hover:bg-slate-400">Tambah
+                    class="bg-purple-600 text-black font-bold px-4 py-2 rounded-md hover:bg-slate-400">Tambah
                     Barang</a>
             @endif
         </div>
