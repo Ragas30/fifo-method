@@ -61,7 +61,7 @@
                                 <td class="px-4 py-2">{{ $pembelian->total_harga }}</td>
                                 <td class="px-4 py-2 flex justify-center gap-2 sm:w-auto w-full">
                                     <a href="{{ route('pembelian.edit', $pembelian->id) }}"
-                                        class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Edit</a>
+                                        class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700 w-full sm:w-auto">Edit</a>
                                     <form action="{{ route('pembelian.destroy', $pembelian->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')

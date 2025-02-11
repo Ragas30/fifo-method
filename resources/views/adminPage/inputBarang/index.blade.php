@@ -2,9 +2,10 @@
 @section('title', 'Input Barang')
 @section('content')
     <div class="container mx-auto py-10">
+        <h1 class="text-3xl font-bold">Table Input Barang</h1>
         <form action="{{ route('input_barang') }}" method="POST" class="space-y-6">
             @csrf
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-200 p-4 rounded-xl shadow-2xl">
                 <div>
                     <label for="nama_barang" class="block text-sm font-medium text-text-white">Nama Barang</label>
                     <input type="text" name="nama_barang" id="nama_barang"
@@ -44,4 +45,3 @@
         </form>
     </div>
 @endsection
-
