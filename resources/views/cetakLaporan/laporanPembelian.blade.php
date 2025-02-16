@@ -73,7 +73,7 @@
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td>{{ $pembelian->barang->nama_barang }}</td>
-                <td>{{ $pembelian->jumlah }}{{ $pembelian->barang->satuan }}</td>
+                <td>{{ $pembelian->jumlah }} {{ $pembelian->barang->satuan }}</td>
                 <td>{{ $pembelian->total_harga / $pembelian->jumlah }}</td>
                 <td>{{ $pembelian->total_harga }}</td>
                 <td>{{ $pembelian->created_at->format('d-m-Y') }}</td>

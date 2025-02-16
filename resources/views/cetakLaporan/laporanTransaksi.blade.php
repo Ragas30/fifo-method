@@ -72,7 +72,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $transaksi->barang->nama_barang }}</td>
                 <td>{{ $transaksi->jenis }}</td>
-                <td>{{ $transaksi->jumlah }}{{ $transaksi->barang->satuan }}</td>
+                <td>{{ $transaksi->jumlah }} {{ $transaksi->barang->satuan }}</td>
                 <td>{{ $transaksi->created_at->format('d-m-Y') }}</td>
             </tr>
         @endforeach

@@ -72,7 +72,7 @@
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td>{{ $penjualan->barang->nama_barang }}</td>
-                <td>{{ $penjualan->jumlah }}{{ $penjualan->barang->satuan }}</td>
+                <td>{{ $penjualan->jumlah }} {{ $penjualan->barang->satuan }}</td>
                 <td>{{ $penjualan->total_harga / $penjualan->jumlah }}</td>
                 <td>{{ $penjualan->total_harga }}</td>
                 <td>{{ $penjualan->created_at->format('d-m-Y') }}</td>

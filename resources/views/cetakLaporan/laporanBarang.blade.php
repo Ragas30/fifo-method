@@ -77,7 +77,7 @@
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td>{{ $barang->nama_barang }}</td>
-                <td>{{ $barang->stok }}{{ $barang->satuan }}</td>
+                <td>{{ $barang->stok }} {{ $barang->satuan }}</td>
                 <td>{{ $barang->harga_beli }}</td>
                 <td>{{ $barang->harga_jual }}</td>
                 <td>{{ $barang->keterangan }}</td>
