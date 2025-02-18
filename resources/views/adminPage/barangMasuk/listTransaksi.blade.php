@@ -32,7 +32,7 @@
                     <tr class="hover:bg-gray-100 border-b border-gray-200">
                         <td class="px-4 py-2">{{ $loop->iteration }}</td>
                         <td class="px-4 py-2">{{ $transaksi->barang->nama_barang }}</td>
-                        <td class="px-4 py-2">{{ $transaksi->jumlah }}</td>
+                        <td class="px-4 py-2">{{ $transaksi->jumlah }} {{ $transaksi->barang->satuan }}</td>
                         <td class="px-4 py-2">{{ $transaksi->jenis }}</td>
                         <td class="px-4 py-2">{{ $transaksi->created_at->format('d-m-Y') }}</td>
                     </tr>
