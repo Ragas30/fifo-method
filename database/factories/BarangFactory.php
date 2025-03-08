@@ -17,6 +17,7 @@ class BarangFactory extends Factory
     public function definition(): array
     {
         return [
+            'kd_barang' => $this->faker->unique()->word(),
             'nama_barang' => $this->faker->word(),
             'stok' => $this->faker->numberBetween(1, 100),
             'satuan' => $this->faker->randomElement(['pcs', 'kg']),

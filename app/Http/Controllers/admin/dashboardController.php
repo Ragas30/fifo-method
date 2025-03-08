@@ -30,8 +30,5 @@ class dashboardController extends Controller
         return view('adminPage.index', compact('barangs'));
     }
 
-    public function inputBarang()
-    {
-        return view('adminPage.inputBarang.index');
-    }
+    
 }

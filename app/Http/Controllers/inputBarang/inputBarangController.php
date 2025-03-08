@@ -17,9 +17,14 @@ class inputBarangController extends Controller
             ->orWhere('harga_jual', 'LIKE', "%{$search}%")
             ->orWhere('satuan', 'LIKE', "%{$search}%")
             ->orWhere('keterangan', 'LIKE', "%{$search}%")
+            ->orWhere('kd_barang', 'LIKE', "%{$search}%")
             ->get();
 
         return view('adminPage.inputBarang.tampilBarang', compact('barangs', 'search'));
+    }
+    public function inputBarang()
+    {
+        return view('adminPage.inputBarang.index');
     }
 
     public function tampil()
@@ -31,12 +36,15 @@ class inputBarangController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'kd_barang'   => 'required|string|max:255|unique:barang',
             'nama_barang' => 'required|string|max:255',
-            'stok' => 'required|integer|min:0',
-            'harga_beli' => 'required|min:0',
-            'harga_jual' => 'required|min:0',
-            'satuan' => 'required|string|max:255',
-            'keterangan' => 'nullable|string|max:255',
+            'stok'        => 'required|integer|min:0',
+            'harga_beli'  => 'required|min:0',
+            'harga_jual'  => 'required|min:0',
+            'satuan'      => 'required|string|max:255',
+            'keterangan'  => 'nullable|string|max:255',
+        ], [
+            'kd_barang.unique' => 'Kode barang sudah ada',
         ]);
 
         $barang = Barang::where('nama_barang', $request->nama_barang)->first();
@@ -46,17 +54,19 @@ class inputBarangController extends Controller
             $barang->save();
         } else {
             Barang::create([
+                'kd_barang'   => $request->kd_barang,
                 'nama_barang' => $request->nama_barang,
-                'stok' => $request->stok,
-                'harga_beli' => $request->harga_beli,
-                'harga_jual' => $request->harga_jual,
-                'satuan' => $request->satuan,
-                'keterangan' => $request->keterangan,
+                'stok'        => $request->stok,
+                'harga_beli'  => $request->harga_beli,
+                'harga_jual'  => $request->harga_jual,
+                'satuan'      => $request->satuan,
+                'keterangan'  => $request->keterangan,
             ]);
         }
 
         return redirect()->route('tampil_barang')->with('success', 'Barang berhasil ditambahkan.');
     }
+
 
 
     public function destroy(Request $request) //+

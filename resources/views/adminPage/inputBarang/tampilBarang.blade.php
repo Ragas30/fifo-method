@@ -26,6 +26,7 @@
             <thead>
                 <tr>
                     <th class="px-4 py-2">No</th>
+                    <th class="px-4 py-2">Kode Barang</th>
                     <th class="px-4 py-2">Nama Barang</th>
                     <th class="px-4 py-2">Stok Barang</th>
                     <th class="px-4 py-2">Harga Beli</th>
@@ -40,6 +41,7 @@
                 @foreach ($barangs as $barang)
                     <tr>
                         <td class="border px-4 py-2">{{ $loop->iteration }}</td>
+                        <td class="border px-4 py-2">{{ $barang->kd_barang }}</td>
                         <td class="border px-4 py-2">{{ $barang->nama_barang }}</td>
                         <td class="border px-4 py-2">{{ $barang->stok }} {{ $barang->satuan }}</td>
                         <td class="border px-4 py-2">{{ $barang->harga_beli }}</td>

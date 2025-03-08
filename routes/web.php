@@ -42,8 +42,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [dashboardController::class, "index"])->name('dashboard');
 
     //Table Barang
-    Route::get('/input_barang', [dashboardController::class, "inputBarang"])->name('input_barang');
-    Route::post('/input_barang', [inputBarangController::class, "store"])->name('input_barang');
+    // Route::get('/input_barang', [dashboardController::class, "inputBarang"])->name('input_barang');
+    Route::get('/input_barang', [inputBarangController::class, "inputBarang"])->name('input_barang');
+    Route::post('/input_barang', [inputBarangController::class, "store"])->name('post_barang');
     Route::get('/tampil_barang', [inputBarangController::class, "tampil"])->name('tampil_barang');
     Route::get('/get_barang', [inputBarangController::class, "index"])->name('get_barang');
     Route::get('/delete_barang/{id}', [inputBarangController::class, "destroy"])->name('delete_barang');
