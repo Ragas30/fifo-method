@@ -2,7 +2,7 @@
 @section('title', 'Tampil Barang')
 @section('content')
     <header class="flex justify-between md:flex-row flex-col md:items-center items-start">
-        <h1 class="text-3xl font-bold md:mb-0 mb-4">Data Barang</h1>
+        <h1 class="text-3xl font-bold md:mb-0 mb-4">Data Barangs</h1>
         <div>
             <a href="{{ route('print.data.barang') }}"
                 class="bg-purple-600 text-black font-bold px-4 py-2 rounded-md hover:bg-slate-400">Simpan Data Barang</a>
