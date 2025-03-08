@@ -15,6 +15,10 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('barang_id')->unsigned();
             $table->foreign('barang_id')->references('id')->on('barang')->onDelete('cascade');
+
+            $table->integer('id_pembelian')->unsigned()->nullable();
+            $table->foreign('id_pembelian')->references('id')->on('pembelian')->onDelete('cascade');
+
             $table->enum('jenis', ['masuk', 'keluar']);
             $table->integer('jumlah');
             $table->decimal('harga_satuan', 10, 2);

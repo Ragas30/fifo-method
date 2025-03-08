@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('barang_id')->references('id')->on('barang')->onDelete('cascade');
             $table->integer('jumlah');
             $table->decimal('total_harga', 10, 2);
+            $table->integer('sisa');
             $table->timestamps();
         });
     }
