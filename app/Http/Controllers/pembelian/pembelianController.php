@@ -11,10 +11,30 @@ use Illuminate\Support\Facades\DB;
 
 class pembelianController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $barangs = Barang::all();
-        $pembelians = Pembelian::with('barang')->get();
+        
+        // Ambil filter dari request
+        $tanggal = $request->query('tanggal');
+        $bulan = $request->query('bulan');
+        $tahun = $request->query('tahun');
+
+        // Query dasar
+        $query = Pembelian::with('barang');
+
+        if ($tanggal) {
+            $query->whereDate('created_at', $tanggal);
+        }
+        if ($bulan) {
+            $query->whereMonth('created_at', $bulan);
+        }
+        if ($tahun) {
+            $query->whereYear('created_at', $tahun);
+        }
+
+        $pembelians = $query->get();
+
         return view('adminPage.pembelian.index', compact('barangs', 'pembelians'));
     }
 
@@ -71,8 +91,6 @@ class pembelianController extends Controller
         ]);
 
         // Perbarui record pembelian.
-        // Catatan: Update nilai sisa harus dilakukan dengan hati-hati,
-        // terutama jika sudah ada transaksi penjualan terkait batch ini.
         $pembelian->jumlah = $request->jumlah;
         $pembelian->total_harga = $request->jumlah * $request->harga_barang;
         $pembelian->sisa = $request->jumlah; // set ulang sisa menjadi jumlah pembelian baru
@@ -88,63 +106,5 @@ class pembelianController extends Controller
         $pembelian->delete();
 
         return redirect()->route('pembelian')->with('success', 'Pembelian berhasil dihapus');
-    }
-
-    /**
-     * Contoh fungsi sell (penjualan) dengan metode FIFO.
-     * Fungsi ini dapat digunakan jika penjualan diproses di sini.
-     * Jika penjualan diproses di controller lain (misalnya, PenjualansController),
-     * fungsi ini bisa dihapus.
-     */
-    public function sell(Request $request)
-    {
-        $request->validate([
-            'barang_id'  => 'required|exists:barang,id',
-            'jumlah'     => 'required|numeric|min:1',
-            'harga_jual' => 'required|numeric|min:1',
-        ]);
-
-        DB::transaction(function () use ($request) {
-            $barangId = $request->barang_id;
-            $jumlahTerjual = $request->jumlah;
-
-            // Ambil batch pembelian untuk barang tersebut yang memiliki sisa (> 0) secara FIFO
-            $batches = Pembelian::where('barang_id', $barangId)
-                ->where('sisa', '>', 0)
-                ->orderBy('created_at', 'asc')
-                ->get();
-
-            foreach ($batches as $batch) {
-                if ($jumlahTerjual <= 0) {
-                    break;
-                }
-                // Ambil jumlah maksimal yang bisa diambil dari batch ini
-                $ambil = min($batch->sisa, $jumlahTerjual);
-
-                // Kurangi sisa stok pada batch
-                $batch->sisa -= $ambil;
-                $batch->save();
-
-                // Catat transaksi penjualan (keluar) per batch
-                Transaksi::create([
-                    'barang_id'    => $barangId,
-                    'id_pembelian' => $batch->id,
-                    'jenis'        => 'keluar',
-                    'jumlah'       => $ambil,
-                    'harga_satuan' => $request->harga_jual,
-                ]);
-
-                $jumlahTerjual -= $ambil;
-            }
-
-            if ($jumlahTerjual > 0) {
-                throw new \Exception("Stok tidak mencukupi untuk penjualan.");
-            }
-
-            // Update stok total di tabel barang
-            Barang::where('id', $barangId)->decrement('stok', $request->jumlah);
-        });
-
-        return redirect()->back()->with('success', 'Penjualan berhasil diproses dengan metode FIFO.');
     }
 }

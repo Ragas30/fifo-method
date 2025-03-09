@@ -38,6 +38,35 @@
         </form>
     </div>
     <div class="overflow-x-auto mt-4">
+        <div class="overflow-x-auto">
+            <form action="{{ request()->url() }}" method="GET">
+                <div class="flex justify-start gap-2 items-center">
+                    <label for="tanggal" class="block text-sm font-medium text-text-white">Tanggal</label>
+                    <input type="date" name="tanggal" class="px-4 py-2 border rounded-md" value="{{ request()->query('tanggal') ?? '' }}">
+                    <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Filter</button>
+                </div>
+            </form>
+            <form action="{{ request()->url() }}" method="GET">
+                <div class="flex justify-start gap-2 items-center">
+                    <label for="bulan" class="block text-sm font-medium text-text-white">Bulan</label>
+                    <select name="bulan" class="px-4 py-2 border rounded-md">
+                        <option value="">Pilih Bulan</option>
+                        @for ($i = 1; $i <= 12; $i++)
+                            <option value="{{ $i }}" {{ request()->query('bulan') == $i ? 'selected' : '' }}>
+                                {{ date('F', mktime(0, 0, 0, $i, 1)) }}</option>
+                        @endfor
+                    </select>
+                    <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Filter</button>
+                </div>
+            </form>
+            <form action="{{ request()->url() }}" method="GET">
+                <div class="flex justify-start gap-2 items-center">
+                    <label for="tahun" class="block text-sm font-medium text-text-white">Tahun</label>
+                    <input type="number" name="tahun" class="px-4 py-2 border rounded-md" value="{{ request()->query('tahun') ?? '' }}">
+                    <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Filter</button>
+                </div>
+            </form>
+        </div>
         <table class="table-auto w-full sm:table">
             <thead>
                 <tr class="bg-gray-100">

@@ -40,42 +40,69 @@
     <div class="overflow-x-auto">
         <div class="mt-4">
             <div class="overflow-x-auto">
-                <table class="table-auto w-full sm:table">
-                    <thead>
-                        <tr class="bg-gray-100">
-                            <th class="px-4 py-2 text-center">No</th>
-                            <th class="px-4 py-2 text-center">Nama Barang</th>
-                            <th class="px-4 py-2 text-center">Jumlah Barang</th>
-                            <th class="px-4 py-2 text-center">Harga Barang</th>
-                            <th class="px-4 py-2 text-center">Total Harga</th>
-                            <th class="px-4 py-2 text-center">Sisa</th>
-                            <th class="px-4 py-2 text-center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-center">
-                        @foreach ($pembelians as $index => $pembelian)
-                            <tr class="hover:bg-gray-100 border-b border-gray-200">
-                                <td class="px-4 py-2">{{ $loop->iteration }}</td>
-                                <td class="px-4 py-2">{{ $pembelian->barang->nama_barang }}</td>
-                                <td class="px-4 py-2">{{ $pembelian->jumlah }} {{ $pembelian->barang->satuan }}</td>
-                                <td class="px-4 py-2">{{ number_format($pembelian->total_harga / $pembelian->jumlah, 0, ',', '.') }}</td>
-                                <td class="px-4 py-2">{{ number_format($pembelian->total_harga, 0, ',', '.') }}</td>
-                                <td class="px-4 py-2">{{ $pembelian->sisa }}</td>
-                                <td class="px-4 py-2 flex justify-center gap-2 sm:w-auto w-full">
-                                    <a href="{{ route('pembelian.edit', $pembelian->id) }}"
-                                        class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700 w-full sm:w-auto">Edit</a>
-                                    <form action="{{ route('pembelian.destroy', $pembelian->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button
-                                            class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 w-full sm:w-auto">Hapus</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <form action="{{ request()->url() }}" method="GET">
+                    <div class="flex justify-start gap-2 items-center">
+                        <label for="tanggal" class="block text-sm font-medium text-text-white">Tanggal</label>
+                        <input type="date" name="tanggal" class="px-4 py-2 border rounded-md" value="{{ request()->query('tanggal') ?? '' }}">
+                        <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Filter</button>
+                    </div>
+                </form>
+                <form action="{{ request()->url() }}" method="GET">
+                    <div class="flex justify-start gap-2 items-center">
+                        <label for="bulan" class="block text-sm font-medium text-text-white">Bulan</label>
+                        <select name="bulan" class="px-4 py-2 border rounded-md">
+                            <option value="">Pilih Bulan</option>
+                            @for ($i = 1; $i <= 12; $i++)
+                                <option value="{{ $i }}" {{ request()->query('bulan') == $i ? 'selected' : '' }}>
+                                    {{ date('F', mktime(0, 0, 0, $i, 1)) }}</option>
+                            @endfor
+                        </select>
+                        <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Filter</button>
+                    </div>
+                </form>
+                <form action="{{ request()->url() }}" method="GET">
+                    <div class="flex justify-start gap-2 items-center">
+                        <label for="tahun" class="block text-sm font-medium text-text-white">Tahun</label>
+                        <input type="number" name="tahun" class="px-4 py-2 border rounded-md" value="{{ request()->query('tahun') ?? '' }}">
+                        <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Filter</button>
+                    </div>
+                </form>
             </div>
+            <table class="table-auto w-full sm:table">
+                <thead>
+                    <tr class="bg-gray-100">
+                        <th class="px-4 py-2 text-center">No</th>
+                        <th class="px-4 py-2 text-center">Nama Barang</th>
+                        <th class="px-4 py-2 text-center">Jumlah Barang</th>
+                        <th class="px-4 py-2 text-center">Harga Barang</th>
+                        <th class="px-4 py-2 text-center">Total Harga</th>
+                        <th class="px-4 py-2 text-center">Sisa</th>
+                        <th class="px-4 py-2 text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @foreach ($pembelians as $index => $pembelian)
+                        <tr class="hover:bg-gray-100 border-b border-gray-200">
+                            <td class="px-4 py-2">{{ $loop->iteration }}</td>
+                            <td class="px-4 py-2">{{ $pembelian->barang->nama_barang }}</td>
+                            <td class="px-4 py-2">{{ $pembelian->jumlah }} {{ $pembelian->barang->satuan }}</td>
+                            <td class="px-4 py-2">{{ number_format($pembelian->total_harga / $pembelian->jumlah, 0, ',', '.') }}</td>
+                            <td class="px-4 py-2">{{ number_format($pembelian->total_harga, 0, ',', '.') }}</td>
+                            <td class="px-4 py-2">{{ $pembelian->sisa }}</td>
+                            <td class="px-4 py-2 flex justify-center gap-2 sm:w-auto w-full">
+                                <a href="{{ route('pembelian.edit', $pembelian->id) }}"
+                                    class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700 w-full sm:w-auto">Edit</a>
+                                <form action="{{ route('pembelian.destroy', $pembelian->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button
+                                        class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 w-full sm:w-auto">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection
@@ -86,3 +113,4 @@
         document.getElementById('harga_barang').value = hargaBarang;
     }
 </script>
+

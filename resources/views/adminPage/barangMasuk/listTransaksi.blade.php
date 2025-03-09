@@ -9,12 +9,19 @@
         </a>
     </header>
 
-    {{-- <form action="{{ route('transaksi.search') }}" method="GET">
-        <div class="flex items-center mb-4">
-            <input type="text" name="search" class="px-4 py-2 border rounded-md" placeholder="Cari berdasarkan nama barang">
-            <button type="submit" class="bg-white text-black font-bold px-4 py-2 rounded-md shadow-md hover:bg-slate-700">Cari</button>
+    <form action="{{ route('listTransaksi') }}" method="GET" class="mb-4">
+        <div class="flex items-center gap-2">
+            <input type="date" name="tanggal" class="px-4 py-2 border rounded-md" placeholder="Pilih Tanggal">
+            <select name="bulan" class="px-4 py-2 border rounded-md">
+                <option value="">Pilih Bulan</option>
+                @for ($i = 1; $i <= 12; $i++)
+                    <option value="{{ $i }}">{{ date('F', mktime(0, 0, 0, $i, 1)) }}</option>
+                @endfor
+            </select>
+            <input type="number" name="tahun" class="px-4 py-2 border rounded-md" placeholder="Tahun">
+            <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Filter</button>
         </div>
-    </form> --}}
+    </form>
 
     <div class="overflow-x-auto">
         <table class="table-auto w-full">

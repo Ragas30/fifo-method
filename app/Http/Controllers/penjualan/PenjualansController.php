@@ -12,12 +12,32 @@ use Illuminate\Support\Facades\DB;
 
 class PenjualansController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $query = Penjualan::with('barang');
+
+        // Filter berdasarkan tanggal
+        if ($request->filled('tanggal')) {
+            $query->whereDate('created_at', $request->tanggal);
+        }
+
+        // Filter berdasarkan bulan
+        if ($request->filled('bulan')) {
+            $query->whereMonth('created_at', $request->bulan);
+        }
+
+        // Filter berdasarkan tahun
+        if ($request->filled('tahun')) {
+            $query->whereYear('created_at', $request->tahun);
+        }
+
+        // Ambil data penjualan yang telah difilter
+        $penjualans = $query->get();
         $barangs = Barang::all();
-        $penjualans = Penjualan::with('barang')->get();
+
         return view('adminPage.penjualan.index', compact('barangs', 'penjualans'));
     }
+
 
     public function store(Request $request)
     {

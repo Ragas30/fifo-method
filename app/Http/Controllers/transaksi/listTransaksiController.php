@@ -8,10 +8,26 @@ use App\Http\Controllers\Controller;
 
 class listTransaksiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $transaksis = Transaksi::with('barang')->get();
-        // dd($transaksis);
-        return view('adminPage.barangMasuk.listTransaksi', compact('transaksis'));
+        $search  = $request->query('search');
+        $tanggal = $request->query('tanggal');
+
+        $query = Transaksi::with('barang');
+
+        if ($search) {
+            $query->where('kode_transaksi', 'LIKE', "%{$search}%")
+                ->orWhereHas('barang', function ($q) use ($search) {
+                    $q->where('nama_barang', 'LIKE', "%{$search}%");
+                });
+        }
+
+        if ($tanggal) {
+            $query->whereDate('created_at', $tanggal);
+        }
+
+        $transaksis = $query->get();
+
+        return view('adminPage.barangMasuk.listTransaksi', compact('transaksis', 'search', 'tanggal'));
     }
 }
