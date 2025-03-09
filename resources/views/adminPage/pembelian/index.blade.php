@@ -77,6 +77,7 @@
                         <th class="px-4 py-2 text-center">Harga Barang</th>
                         <th class="px-4 py-2 text-center">Total Harga</th>
                         <th class="px-4 py-2 text-center">Sisa</th>
+                        <th class="px-4 py-2 text-center">Tanggal</th>
                         <th class="px-4 py-2 text-center">Aksi</th>
                     </tr>
                 </thead>
@@ -89,6 +90,7 @@
                             <td class="px-4 py-2">{{ number_format($pembelian->total_harga / $pembelian->jumlah, 0, ',', '.') }}</td>
                             <td class="px-4 py-2">{{ number_format($pembelian->total_harga, 0, ',', '.') }}</td>
                             <td class="px-4 py-2">{{ $pembelian->sisa }}</td>
+                            <td class="px-4 py-2">{{ $pembelian->created_at->format('d-m-Y') }}</td>
                             <td class="px-4 py-2 flex justify-center gap-2 sm:w-auto w-full">
                                 <a href="{{ route('pembelian.edit', $pembelian->id) }}"
                                     class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700 w-full sm:w-auto">Edit</a>

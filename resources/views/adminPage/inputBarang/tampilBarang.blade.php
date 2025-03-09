@@ -13,25 +13,42 @@
         </div>
     </header>
 
-    <form action="{{ route('get_barang') }}" method="GET" class="mt-4">
-        <div class="flex items-center gap-2 flex-wrap">
-            <input type="date" name="tanggal" class="px-4 py-2 rounded-md border"
-                value="{{ request()->query('tanggal') }}">
-            <select name="bulan" class="px-4 py-2 rounded-md border">
-                <option value="">Pilih Bulan</option>
-                @for ($i = 1; $i <= 12; $i++)
-                    <option value="{{ $i }}" {{ request()->query('bulan') == $i ? 'selected' : '' }}>
-                        {{ date('F', mktime(0, 0, 0, $i, 1)) }}
-                    </option>
-                @endfor
-            </select>
-            <input type="number" name="tahun" class="px-4 py-2 rounded-md border" placeholder="Tahun"
-                value="{{ request()->query('tahun') }}">
-            <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Filter</button>
-            <a href="{{ route('print.data.barang', request()->query()) }}"
-                class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">Print Laporan</a>
+    <div class="gap-2 flex flex-col">
+
+        <div class="">
+            <form action="{{ route('get_barang') }}" method="GET" class="mt-4">
+                <div class="flex items-center gap-2 flex-wrap">
+                    <input type="date" name="tanggal" class="px-4 py-2 rounded-md border"
+                        value="{{ request()->query('tanggal') }}">
+                    <select name="bulan" class="px-4 py-2 rounded-md border">
+                        <option value="">Pilih Bulan</option>
+                        @for ($i = 1; $i <= 12; $i++)
+                            <option value="{{ $i }}" {{ request()->query('bulan') == $i ? 'selected' : '' }}>
+                                {{ date('F', mktime(0, 0, 0, $i, 1)) }}
+                            </option>
+                        @endfor
+                    </select>
+                    <input type="number" name="tahun" class="px-4 py-2 rounded-md border" placeholder="Tahun"
+                        value="{{ request()->query('tahun') }}">
+                    <button type="submit"
+                        class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Filter</button>
+                    {{-- <a href="{{ route('print.data.barang', request()->query()) }}"
+                        class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">Print Laporan</a> --}}
+                </div>
+            </form>
         </div>
-    </form>
+
+        <div>
+            <form action="{{ route('get_barang') }}" method="GET">
+                <div class="flex items-center gap-2">
+                    <input type="text" name="search" class="px-4 py-2 rounded-md border" placeholder="Cari Barang"
+                        value="{{ request()->query('search') }}">
+                    <button type="submit"
+                        class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Cari</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <div class="overflow-x-auto mt-4">
         <table class="table-fixed w-full">

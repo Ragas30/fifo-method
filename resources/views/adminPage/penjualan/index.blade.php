@@ -42,8 +42,10 @@
             <form action="{{ request()->url() }}" method="GET">
                 <div class="flex justify-start gap-2 items-center">
                     <label for="tanggal" class="block text-sm font-medium text-text-white">Tanggal</label>
-                    <input type="date" name="tanggal" class="px-4 py-2 border rounded-md" value="{{ request()->query('tanggal') ?? '' }}">
-                    <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Filter</button>
+                    <input type="date" name="tanggal" class="px-4 py-2 border rounded-md"
+                        value="{{ request()->query('tanggal') ?? '' }}">
+                    <button type="submit"
+                        class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Filter</button>
                 </div>
             </form>
             <form action="{{ request()->url() }}" method="GET">
@@ -56,14 +58,17 @@
                                 {{ date('F', mktime(0, 0, 0, $i, 1)) }}</option>
                         @endfor
                     </select>
-                    <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Filter</button>
+                    <button type="submit"
+                        class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Filter</button>
                 </div>
             </form>
             <form action="{{ request()->url() }}" method="GET">
                 <div class="flex justify-start gap-2 items-center">
                     <label for="tahun" class="block text-sm font-medium text-text-white">Tahun</label>
-                    <input type="number" name="tahun" class="px-4 py-2 border rounded-md" value="{{ request()->query('tahun') ?? '' }}">
-                    <button type="submit" class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Filter</button>
+                    <input type="number" name="tahun" class="px-4 py-2 border rounded-md"
+                        value="{{ request()->query('tahun') ?? '' }}">
+                    <button type="submit"
+                        class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700">Filter</button>
                 </div>
             </form>
         </div>
@@ -75,6 +80,7 @@
                     <th class="px-4 py-2 text-center">Jumlah Barang</th>
                     <th class="px-4 py-2 text-center">Harga Barang</th>
                     <th class="px-4 py-2 text-center">Total Harga</th>
+                    <th class="px-4 py-2 text-center">Tanggal</th>
                     <th class="px-4 py-2 text-center">Aksi</th>
                 </tr>
             </thead>
@@ -86,6 +92,7 @@
                         <td class="px-4 py-2">{{ $penjualan->jumlah }} {{ $penjualan->barang->satuan }}</td>
                         <td class="px-4 py-2">{{ $penjualan->barang->harga_jual }}</td>
                         <td class="px-4 py-2">{{ $penjualan->total_harga }}</td>
+                        <td class="px-4 py-2">{{ $penjualan->created_at->format('d-m-Y') }}</td>
                         <td class="px-4 py-2 flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center">
                             <a href="{{ route('penjualan.edit', $penjualan->id) }}"
                                 class="bg-violet-600 text-white px-4 py-2 rounded-md hover:bg-violet-700 w-full sm:w-auto">Edit</a>
